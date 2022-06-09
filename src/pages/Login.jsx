@@ -1,117 +1,130 @@
-import React, { useState, useRef }  from 'react'
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Link } from 'react-router-dom';
-import { CircularProgress, Alert } from '@mui/material';
-import CheckButton from "react-validation/build/button";
-import { login } from "../actions/auth";
+import { Link } from "react-router-dom";
+import { Formik, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { login } from "../slices/auth";
+import { clearMessage } from "../slices/message";
+import { Alert, CircularProgress } from "@mui/material";
 
-const required = (value) => {
-    if (!value) {
-      return (
-        <Alert severity="error">This is an error alert — check it out!</Alert>
-      );
-    }
-  };
+
 
 const Login = (props) => {
-
-  const form = useRef();
-  const checkBtn = useRef();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { isLoggedIn } = useSelector(state => state.auth);
-  const { message } = useSelector(state => state.message);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
   const dispatch = useDispatch();
-  const onChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
+  useEffect(() => {
+    dispatch(clearMessage());
+  }, [dispatch]);
+  const initialValues = {
+    email: "",
+    password: "",
   };
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().required("This field is required!"),
+    password: Yup.string().required("This field is required!"),
+  });
+  const handleLogin = (formValue) => {
+    const { email, password } = formValue;
     setLoading(true);
-    form.current.validateAll();
-    if (checkBtn.current.context._errors.length === 0) {
-      dispatch(login(email, password))
-        .then(() => {
-          props.history.push("/dashboard");
-          window.location.reload();
-        })
-        .catch(() => {
-          setLoading(false);
-        });
-    } else {
-      setLoading(false);
-    }
+    dispatch(login({ email, password }))
+      .unwrap()
+      .then(() => {
+        props.history.push("/dashboard");
+        window.location.reload();
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   };
   if (isLoggedIn) {
-    Navigate('/dashboard')
+    return <Link to='/dashboard'></Link>
   }
+
   return (
-   <>
-   <div className="wrapper">
+    <>
+      <div className="wrapper">
         <div className="form_container">
-          <form name='form' onSubmit={handleLogin} ref={form}>
-            <div className="heading">
-              <h2>Welcome</h2>
-            </div>
-
-            <div className="form_wrap">
-              <div className="form_item">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  name="email"
-                  value={email}
-                  id="email"
-                  validations={[required]}
-                  onChange={onChangeEmail}
-                />
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleLogin}
+          >
+            <form name='form' onSubmit={handleLogin} >
+              <div className="heading">
+                <h2>Welcome</h2>
               </div>
-            </div>
-            <div className="forpass">
-              <Link to="/">
-                <p>Forgot Passwoord</p>
-              </Link>
-            </div>
-            <div className="form_wrap">
-              <div className="form_item">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={password}
-                  id="password"
-                  validations={[required]}
-                  onChange={onChangePassword}
-                />
-              </div>
-            </div>
 
-            <div className="btn">
-              <input type="submit" value="Login" disabled={loading}/>
-              {loading && (
-                <CircularProgress color="success" />
+              <div className="form_wrap">
+                <div className="form_item">
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    name="email"
+                    
+                    id="email"
+                    required
+
+                  />
+                  <ErrorMessage
+                    name="username"
+                    component="div"
+                    className="alert alert-danger"
+                  />
+                </div>
+              </div>
+              <div className="forpass">
+                <Link to="/">
+                  <p>Forgot Passwoord</p>
+                </Link>
+              </div>
+              <div className="form_wrap">
+                <div className="form_item">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    
+                    id="password"
+                    required
+
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="alert alert-danger"
+                  />
+                </div>
+              </div>
+
+              <div className="btn">
+                <input type="submit" value="Login" disabled={loading} />
+                {loading && (
+                  <CircularProgress color="success" />
+                )}
+              </div>
+              {message && (
+                <div className="form-group">
+                  <Alert severity="error"> {message}</Alert>
+                </div>
               )}
-            </div>
-            {message && (
-            <div className="form-group">
-             <Alert severity="error"> {message}</Alert>
-            </div>
-          )}
-            <div>
-              <p>
-                Not have a Account
-                <Link to="/register"> Register here</Link>
-              </p>
-            </div>
-            <CheckButton style={{ display: "none" }} ref={checkBtn} />
-          </form>
+              <div>
+                <p>
+                  Not have a Account
+                  <Link to="/register"> Register here</Link>
+                </p>
+              </div>
+
+            </form>
+          </Formik>
         </div>
+        {message && (
+          <div className="form-group">
+            <Alert severity="error">{message}</Alert>
+
+          </div>
+        )}
       </div>
     </>
   )
