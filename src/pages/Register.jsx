@@ -1,4 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import Alert from "@mui/material/Alert"
+import axios from "axios";
+import { Navigate } from "react-router";
+import { Link } from "react-router-dom";
 
 
 const required = (value) => {
@@ -14,6 +18,24 @@ const Register = () => {
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [naviagte, setNaviagte] = useState(false);
+    
+    const handleRegister = async e =>{
+        e.preventDefault();
+
+        await axios.post('vendor/addVendor', {
+            name, 
+            phone, 
+            email,
+            password
+        });
+
+        setNaviagte(true);
+    }
+    if(naviagte){
+        return <Navigate to='/pickup-address' />;
+    }
+
     return (
         <>
             <div>
@@ -31,9 +53,9 @@ const Register = () => {
                                                     type="text"
                                                     id="name"
                                                     name="name"
-                                                    value={name}
+                                                    // value={name}
                                                     placeholder="Name"
-                                                    onChange={onChangename}
+                                                    onChange={e => setName(e.target.value) }
                                                     validations={[required]}
                                                     required
                                                 />
@@ -43,11 +65,11 @@ const Register = () => {
                                                     <input
                                                         type="email"
                                                         name="email"
-                                                        value={email}
+                                                        // value={email}
                                                         id="email"
                                                         placeholder="Email Address"
                                                         required
-                                                        onChange={onChangeEmail}
+                                                        onChange={e => setEmail(e.target.value) }
                                                         validations={[required]}
                                                     />
                                                 </div>
@@ -55,14 +77,14 @@ const Register = () => {
                                             <div className="form_wrap">
                                                 <div className="form_item">
                                                     <input
-                                                        value={phone}
+                                                        // value={phone}
                                                         name="phone"
                                                         id="phone"
                                                         type="tel"
                                                         placeholder="Phone"
                                                         maxLength="10"
                                                         required
-                                                        onChange={onChangePhone}
+                                                        onChange={e => setPhone(e.target.value) }
                                                         validations={[required]}
                                                     />
                                                 </div>
@@ -74,9 +96,9 @@ const Register = () => {
                                                         placeholder="Password"
                                                         name="password"
                                                         id="password"
-                                                        value={password}
+                                                        // value={password}
                                                         required
-                                                        onChange={onChangePassword}
+                                                        onChange={e => setPassword(e.target.value) }
                                                         validations={[required]}
                                                     />
                                                 </div>
