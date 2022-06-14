@@ -7,6 +7,7 @@ import Register from '../src/pages/Register'
 import BankDetail from '../src/pages/BankDetails'
 import BussinessDetail from './pages/BussinessDetails';
 import PickupAddress from './pages/PickupAddress';
+import Navbar from './components/header';
 
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
     <div className="App">
       <div className='container'>
       
+      
         <BrowserRouter>
+        <Navbar/>
           <Routes>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
