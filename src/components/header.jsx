@@ -2,51 +2,72 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Images from '../images/index'
 
 function Navbar() {
   return (
-    // <!-- Navbar -->
-<nav className="navbar navbar-expand-lg fixed-top bg-light navbar-light">
-  <div className="container">
-    <Link className="navbar-brand" to={'/'}
-      ><img
-        id="MDB-logo"
-        src="https://mdbcdn.b-cdn.net/wp-content/uploads/2018/06/logo-mdb-jquery-small.png"
-        alt="MDB Logo"
-        draggable="false"
-        height="30"
-    /></Link>
-    <button
-      className="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <FontAwesomeIcon icon = {faBars}/>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav ms-auto align-items-center">
-        {/* <li className="nav-item">
-          <a className="nav-link mx-2" href="#!"><i className="fas fa-plus-circle pe-2"></i>Post</a>
+
+    <section className="navigation fixed-top">
+  <div className="nav-container ">
+    <div className="brand">
+      <a href="/home">
+        <img src={Images.nameIcon} alt=""
+        height={35} />
+      </a>
+    </div>
+    <nav>
+      <div className="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
+      <ul className="nav-list">
+        <li>
+          <a href="#!">Home</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link mx-2" href="#!"><i className="fas fa-bell pe-2"></i>Alerts</a>
+        {/* <li>
+          <a href="#!">About</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link mx-2" href="#!"><i className="fas fa-heart pe-2"></i>Trips</a>
+        <li>
+          <a href="#!">Services</a>
+          <ul className="navbar-dropdown">
+            <li>
+              <a href="#!">Sass</a>
+            </li>
+            <li>
+              <a href="#!">Less</a>
+            </li>
+            <li>
+              <a href="#!">Stylus</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">Portfolio</a>
+        </li>
+        <li>
+          <a href="#!">Category</a>
+          <ul className="navbar-dropdown">
+            <li>
+              <a href="#!">Sass</a>
+            </li>
+            <li>
+              <a href="#!">Less</a>
+            </li>
+            <li>
+              <a href="#!">Stylus</a>
+            </li>
+          </ul>
         </li> */}
-        <li className="nav-item ms-3">
-          <a className="btn btn-black btn-rounded" href="#!">Sign in</a>
+        <li>
+          <Link to='/login'>Login</Link>
+        </li>
+        <li>
+          <Link to ='/Register'>Register</Link>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
-</nav>
-// <!-- Navbar -->
-// <!-- Navbar -->
+</section>
+
+
+
   )
 }
 

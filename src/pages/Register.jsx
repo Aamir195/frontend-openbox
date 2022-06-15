@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import Images from '../images/index'
 const URL = 'http://localhost:8000/api/vendor/addVendor'
+
 
 export default function Register() {
     const navigate = useNavigate();
@@ -22,13 +24,12 @@ export default function Register() {
                 phone: phone,
                 password: password
             });
-            console.log(resp.data)
+            console.log(resp.data);
             // let user = JSON.parse(sessionStorage.getItem('data'));
             // const token = user.data.id;
-            navigate('/pickup-address', { replace: true });
-
-
-
+            //  resp = await resp.json()
+            // localStorage.setItem("user-info", JSON.stringify(resp))
+            navigate('/pickup-address', { replace: true })
 
         } catch (error) {
             console.log(error.response)
@@ -40,7 +41,8 @@ export default function Register() {
         <>
             <div>
                 <div className="row">
-                    {/* form start here  */}
+                    <div className="parent">
+                        {/* form start here  */}
                     <div className="column1">
                         <div className="wrapper">
                             <div className="form_container">
@@ -49,6 +51,7 @@ export default function Register() {
                                     <div className="heading">
                                         <h2>Create Your Seller Account</h2>
                                     </div>
+                                    <div className="form_wrap">
                                     <div className="form_item">
                                         <input
                                             type="text"
@@ -61,6 +64,7 @@ export default function Register() {
                                             required
 
                                         />
+                                    </div>
                                     </div>
                                     <div className="form_wrap">
                                         <div className="form_item">
@@ -109,7 +113,7 @@ export default function Register() {
                                     </div>
 
                                     <div>
-                                        <p style={{ padding: 1 }}>
+                                        <p className='test'>
                                             By filling this form, I agree to ?
                                             <Link to="/"> Term & Condition</Link>
                                         </p>
@@ -127,7 +131,7 @@ export default function Register() {
                         </div>
                     </div>
                     {/* form ends here  */}
-                    <div className="vertical"></div>
+                    {/* <div className="vertical"></div> */}
                     <div className="column2">
                         <h2 className="forh2">
                             Sell to millions of customers on Shopperspot, Right from your
@@ -136,15 +140,15 @@ export default function Register() {
                         <p>All you need to sell on Shopperspot is </p>
                         <div className="content2">
                             <div className="content1">
-                                {/* <img className="imgd" src={Doc} alt="" /> */}
+                                <img className="imgd" src={Images.Docs} alt="" />
                                 <p className="ptext">GSTIN*</p>
                             </div>
                             <div className="content1 middleContent">
-                                {/* <img className="imgd" src={Cheque} alt="" /> */}
+                                <img className="imgd" src={Images.cheque} alt="" />
                                 <p className="ptext">Bank Account</p>
                             </div>
                             <div className="content1">
-                                {/* <img className="imgd" src={Shoe} alt="" /> */}
+                                <img className="imgd" src={Images.shoes} alt="" />
                                 <p className="ptext">Products to sell</p>
                             </div>
                         </div>
@@ -152,6 +156,9 @@ export default function Register() {
                             *GSTIN is not required for sellers who only sell books{" "}
                         </p>
                     </div>
+
+                    </div>
+                    
                 </div>
             </div>
         </>
