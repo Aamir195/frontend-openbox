@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 // import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import '../src/interceptors/axios'
+import '../src/interceptors/axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "typeface-poppins";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

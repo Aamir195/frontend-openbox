@@ -39,15 +39,18 @@
 
 /* two column  */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,600&display=swap');
+
 
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  margin-top: 30px;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:#FAFAFA;
 }
 
 code {
@@ -491,6 +494,24 @@ nav ul li ul li a {
     transform: translate(-50%, -65%);
     /* align-items: center; */
   }
+  .btn input[type="button"] {
+    background: #000;
+    border: 1px solid #858c8f;
+    /* padding: 10px; */
+    position: absolute;
+    /* margin: 0; */
+    width: 25%;
+    /* margin-bottom: 20px; */
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    left: 50%;
+    -ms-transform: translate(-60%, -40%);
+    transform: translate(-50%, -65%);
+    /* align-items: center; */
+  }
 
   .btn1 input[type="submit"] {
     background: #ef9356;
@@ -743,3 +764,102 @@ nav ul li ul li a {
     }
   }
 
+/* dashBoard start here  */
+.order-card {
+  color: #fff;
+}
+.rowClass{
+  margin-top: 2%;
+}
+
+.bg-c-blue {
+  background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+  background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+}
+
+.bg-c-yellow {
+  background: linear-gradient(45deg,#FFB64D,#ffcb80);
+}
+
+.bg-c-pink {
+  background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+
+
+.card {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+  box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+  border: none;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+  padding: 25px;
+}
+
+.order-card i {
+  font-size: 26px;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+/* dashboard ends here  */
+
+
+/* ordder page  */
+
+#example {
+  width: 70%;
+  margin: 2%;
+}
+.user-table  .user-table a    {
+  width: 16px;
+  padding-left: 2px;
+}
+@media (max-width: 600px) {
+  .table-responsive table {
+      min-width: 100%
+  }
+}
+
+/* order page  */
+
+/* list Product start here  */
+.headingText{
+  margin-top: 10%;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #ffa449fc !important;
+  border: #000;
+}
+form.form-inline .col-md-6.col-sm-12.mb-2 {
+  display: inline-block;
+  padding: 10px;
+}
+form.form-inline button.btn.btn-primary.mb-2 {
+  display: inline-block;
+  margin: 10px;
+}
+/* list Product ends here  */
+
+#cell-1 img {
+  height: 70px;
+  padding: 10px;
+}
+img {
+  padding: 5px;
+}
+
+/* Inventory  */

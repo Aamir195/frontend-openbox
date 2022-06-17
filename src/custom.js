@@ -1,3 +1,4 @@
+import $ from jquery;
 (function($) { 
     $(function() { 
   
@@ -28,4 +29,4 @@
         $('.navbar-dropdown').hide();
       });
     }); 
-  })(jQuery); 
+  })(jquery); 
