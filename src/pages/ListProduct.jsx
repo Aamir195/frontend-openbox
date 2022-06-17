@@ -124,36 +124,36 @@ function ListProduct() {
                 </div>
                 <div className='container'>
                     <div className="row">
-                    <form className="form-inline">
-                        
-                    <div className="col-md-6 col-sm-12 mb-2">
-                            <div className="form-group">
-                                <label for="category" className="sr-only">Select Category</label>
-                                <select className="form-select" aria-label="Default select example">
-                                    <option selected>Select Category</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        
+                        <form className="form-inline">
+
                             <div className="col-md-6 col-sm-12 mb-2">
-                            <div className="form-group">
-                                <label for="category" className="sr-only">Select Category</label>
-                                <select className="form-select" aria-label="Default select example">
-                                    <option selected>Select Category</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
+                                <div className="form-group">
+                                    <label for="category" className="sr-only">Select Category</label>
+                                    <select className="form-select" aria-label="Default select example">
+                                        <option selected>Select Category</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <button type="submit" className="btn btn-primary mb-2">Show product</button>
-                    </form>
+
+                            <div className="col-md-6 col-sm-12 mb-2">
+                                <div className="form-group">
+                                    <label for="category" className="sr-only">Select Category</label>
+                                    <select className="form-select" aria-label="Default select example">
+                                        <option selected>Select Category</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" className="btn btn-primary mb-2">Show product</button>
+                        </form>
 
                     </div>
-                    
+
                 </div>
             </div>
             <hr />
@@ -161,7 +161,7 @@ function ListProduct() {
                 <div className="row">
                     <DataTableExtensions {...tableData}>
                         <DataTable
-                        // title = "All Products"
+                            // title = "All Products"
                             columns={columns}
                             data={data}
                             defaultSortField="id"

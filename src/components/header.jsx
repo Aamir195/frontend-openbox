@@ -12,7 +12,7 @@ function Navbar() {
         <div className="brand">
           <a href="/home">
             <img src={Images.nameIcon} alt=""
-              height={35} />
+              height={40} />
           </a>
         </div>
         <nav>

@@ -130,7 +130,7 @@ function Inventrory() {
           </div>
         </div>
       </div>
-      <div className="conatainer">
+      <div className="container">
         <div className="container">
           <div className="row">
             <DataTableExtensions {...tableData} >
