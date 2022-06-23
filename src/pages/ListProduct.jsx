@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions'
 import Images from '../images/index';
 import "react-data-table-component-extensions/dist/index.css";
+// import axios from 'axios';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -112,8 +113,32 @@ const tableData = {
     data
 };
 
-
 function ListProduct() {
+
+
+    const [category, setCategory] = useState([]);
+    const [categoryId, setCategoryid] = useState('')
+    // const [subCategory, setSubcategory] = useState([]);
+
+    useEffect(() => {
+
+        const getCategory = async () => {
+            const resp = await fetch('http://localhost:9000/api/category/getAllCategory');
+            const getCat = await resp.json();
+            console.log(getCat)
+            setCategory(await getCat);
+        }
+        getCategory();
+
+    }, []);
+
+    const handleCategory = (event) => {
+        const getCategoryId = event.target.value;
+        console.log(getCategoryId);
+        setCategoryid(getCategoryId);
+    }
+
+
     return (
         <div className="container">
             <div className="">
@@ -125,24 +150,25 @@ function ListProduct() {
                 <div className='container'>
                     <div className="row">
                         <form className="form-inline">
-
                             <div className="col-md-6 col-sm-12 mb-2">
                                 <div className="form-group">
-                                    <label for="category" className="sr-only">Select Category</label>
-                                    <select className="form-select" aria-label="Default select example">
-                                        <option selected>Select Category</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <label htmlFor="category" className="sr-only">Select Category {categoryId} </label>
+                                    <select className="form-select" aria-label="Default select example" onChange={(e) => handleCategory(e)} >
+                                        <option selected disabled >Select Category</option>
+                                        {
+                                            category.map((cat) => (
+                                                <option key={cat.id} value={cat.id} >{cat.categoryName}</option>
+                                            ))
+                                        }
                                     </select>
                                 </div>
                             </div>
 
                             <div className="col-md-6 col-sm-12 mb-2">
                                 <div className="form-group">
-                                    <label for="category" className="sr-only">Select Category</label>
+                                    <label htmlFor="category" className="sr-only">Select Category</label>
                                     <select className="form-select" aria-label="Default select example">
-                                        <option selected>Select Category</option>
+                                        <option >Select Category</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>

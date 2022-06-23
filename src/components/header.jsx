@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faBars } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Images from '../images/index'
 
 function Navbar() {
@@ -22,7 +22,7 @@ function Navbar() {
               <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
-              <Link to="/dashboard">Product List</Link>
+              <Link to="/list-product">Product List</Link>
             </li>
             <li>
               <Link to='/login'>Inventory</Link>

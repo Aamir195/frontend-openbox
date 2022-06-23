@@ -12,6 +12,7 @@ function BussinessDetails() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
+  const [id, setId] = useState("");
   const [gstNumber, setgstNumber] = useState("");
   const [businessName, setBusinessName] = useState("");
   const [panNumber, setPanNumber] = useState("");
@@ -20,35 +21,45 @@ function BussinessDetails() {
   const onSubmit = async (e) => {
     e.preventDefault();
     // console.log(name, email, phone, password);
-    try {
-      const resp = axios.post(Add_URL, {
-        lane: lane,
-        pincode: pincode,
-        city: city,
-        state: state,
-        country: country,
-      })
-      console.log(resp.data);
-      if (resp.status === 200) {
-        let addressId = resp.data.id;
 
-        try {
-          const businessresp = axios.post(BUS_URL, {
-            addressId: addressId,
-            gstNumber: gstNumber,
-            businessName: businessName,
-            panNumber: panNumber
-          })
-          console.log(businessresp.data);
-        } catch (error) {
-          console.log(error.response);
-        }
-      } navigate("/bussiness-detail");
-
-    } catch (error) {
-      console.log(error.response);
-    }
+    var resp = await axios.post(Add_URL, {
+      lane,
+      pincode,
+      city,
+      state,
+      country,
+    })
+    resp = await resp.data;
+    // console.log(resp.id);
+    const id = resp.id
+    console.log(id)
+    setId(id);
   };
+
+
+
+
+  const onhandleChange = async (e) => {
+
+    const formData = new FormData();
+    formData.append('addressId', id)
+    formData.append('gstNumber', gstNumber);
+    formData.append('businessName', businessName);
+    formData.append('panNumber', panNumber);
+    formData.append('signatureImage', files);
+
+    try {
+      var result = await axios.post(BUS_URL, formData)
+
+      result = await result.data
+      console.log(result)
+
+    } catch {
+    
+    }
+
+
+  }
 
   return (
     <>
@@ -59,59 +70,7 @@ function BussinessDetails() {
             <div className="formconatiner1">
               <form name="form" onSubmit={onSubmit}>
                 <div className="formleft">
-
-                  <br />
-                  <p className="ptext">Your Information</p>
-                  <div className="form_item">
-                    <input type="text" placeholder=" gstNumber Number"
-                      name=" gstNumber"
-                      value={gstNumber}
-                      onChange={(e) => setgstNumber(e.target.value)} required />
-                  </div>
-                  <div className="form_item">
-                    <input type="text" placeholder="Bussiness Name" name="businessName"
-                      value={businessName}
-                      onChange={(e) => setBusinessName(e.target.value)} required />
-                  </div>
-                  <div className="form_wrap">
-                    <div className="form_item">
-                      <input type="text" placeholder="PAN Number" name="businessName"
-                        value={panNumber}
-                        onChange={(e) => setPanNumber(e.target.value)} required />
-                    </div>
-                  </div>
-                  {/* <div className="form_wrap">
-                    <div className="form_item">
-                      <select name="busiiness-type" id="cars">
-                        <option value="Choose Bussiness Type">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                      </select>
-                    </div>
-                  </div> */}
-                  <div className="form_wrap">
-                    <p className="ptext">Signature</p>
-                    <table>
-                      <tr>
-                        <td>
-                          <p>
-                            Make sure the signature is visibly large and on a
-                            white background. Allowed file formats are
-                            .jpg,.jpeg,.png,.pdf. Maximum file size : 20 MB.
-                            Seal on the signature not a requirement.
-                          </p>
-                          <label for="myfile">Select files:</label>
-                          <input type="file" id="myfile" name="myfile" onChange={(e) => setFiles(e.target.files[0])} multiple /><br></br>
-
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-                <div className="formRight">
                   <p className="ptext">Your Bussiness Address </p>
-
                   <div className="form_wrap">
                     <div className="form_item">
                       <input
@@ -121,7 +80,6 @@ function BussinessDetails() {
                         value={lane}
                         onChange={(e) => setLane(e.target.value)}
                         required
-
                       />
                     </div>
                   </div>
@@ -130,7 +88,6 @@ function BussinessDetails() {
                       <input type="text" placeholder="Pincode" name="pincode"
                         value={pincode}
                         onChange={(e) => setPincode(e.target.value)}
-
                         required />
                     </div>
                     <div className="form_item">
@@ -138,7 +95,6 @@ function BussinessDetails() {
                         onChange={(e) => setCity(e.target.value)}
                         required />
                     </div>
-
                   </div>
                   <div className="form_custom_colum">
                     <div className="form_item">
@@ -167,6 +123,53 @@ function BussinessDetails() {
                   </div>
                 </div>
               </form>
+              <form action="">
+                <div className="formRight">
+                  <br />
+                  <p className="ptext">Your Information</p>
+                  <div className="form_item">
+                    <input type="text" placeholder=" gstNumber Number"
+                      name=" gstNumber"
+                      value={gstNumber}
+                      onChange={(e) => setgstNumber(e.target.value)} required />
+                  </div>
+                  <div className="form_item">
+                    <input type="text" placeholder="Bussiness Name" name="businessName"
+                      value={businessName}
+                      onChange={(e) => setBusinessName(e.target.value)} required />
+                  </div>
+                  <div className="form_wrap">
+                    <div className="form_item">
+                      <input type="text" placeholder="PAN Number" name="businessName"
+                        value={panNumber}
+                        onChange={(e) => setPanNumber(e.target.value)} required />
+                    </div>
+                  </div>
+                  <div className="form_wrap">
+                    <p className="ptext">Signature</p>
+                    <table>
+                      <tr>
+                        <td>
+                          <p>
+                            Make sure the signature is visibly large and on a
+                            white background. Allowed file formats are
+                            .jpg,.jpeg,.png,.pdf. Maximum file size : 20 MB.
+                            Seal on the signature not a requirement.
+                          </p>
+                          <label for="myfile">Select files:</label>
+                          <input type="file" id="myfile" name="myfile" onChange={(e) => setFiles(e.target.files[0])} multiple /><br></br>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </div>
+                  <div className="btn1">
+                    <input type="submit" onClick={onhandleChange()} value="Continue" />
+                  </div>
+                </div>
+              </form>
+
+
             </div>
           </div>
         </div>

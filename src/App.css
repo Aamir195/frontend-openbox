@@ -836,8 +836,26 @@ a {
 .search-button{
   margin: 10px;
 }
+.status-p {
+  color: #fff;
+  padding: 0px 20px 1px;
+  border-radius: 20px;
+  display: inline-block;
+  text-transform: capitalize;
+  vertical-align: middle;
+}
+.bg-correct{
+  background-color: #008040;
+}
+.bg-pen{
+  background-color: #f1d206;
+}
 
+.progress-bar{
+  padding-top: 1%;
+  margin-top: 2%;
 
+}
 
 /* order page  */
 

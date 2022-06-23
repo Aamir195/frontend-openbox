@@ -1,8 +1,103 @@
 import React from 'react'
 // import Ordertable from '../components/orderTable'
 import { Link } from 'react-router-dom'
+import DataTable from 'react-data-table-component';
+import DataTableExtensions from 'react-data-table-component-extensions'
+import "react-data-table-component-extensions/dist/index.css";
 
 function Order() {
+  const columns = [
+        {
+            name: "Sr no.",
+            selector: "sr",
+            sortable: "true"
+        },
+        {
+    
+            name: "Order Id",
+            selector: "orderid",
+            sortable: true
+        },
+        {
+            name: "User Name",
+            selector: "user",
+            sortable: true
+        },
+        {
+            name: "Gift Order",
+            selector: "giftOrder",
+            sortable: true,
+            //   cell: d => <span>{d.genres.join(", ")}</span>
+        },
+        {
+            name: "Qunatity",
+            selector: "qunaity",
+            sortable: true
+        },
+        {
+            name: "Total Amount",
+            selector: "amount",
+            sortable: true
+        }, {
+            name: "Date",
+            selector: "date",
+            sortable: true
+        },
+        {
+            name: "Order Status",
+            selector: "status",
+            sortable: true
+        },
+        {
+            name: "Summary",
+            selector: "summary",
+            sortable: true
+        },
+        {
+            name: "Invoice",
+            selector: "invoice",
+            sortable: true
+        },
+        {
+            name: "WayBill",
+            selector: "waybill",
+            sortable: true
+        },
+    ];
+
+const data = [
+  {
+    id :1,
+    sr :'1',
+    orderid : '123',
+    user : 'Faf du plesis',
+    giftOrder : 'No',
+    qunaity :'5',
+    amount : '1234',
+    date : '11/12/23',
+    status : <><span class="status-p bg-correct">Delivered</span></>,
+    summary :"summery",
+    invoice : 'invoice',
+    waybill : '-'
+
+  },
+  {
+    id :1,
+    sr :'1',
+    orderid : '123',
+    user : 'Faf du plesis',
+    giftOrder : 'No',
+    qunaity :'5',
+    amount : '1234',
+    date : '11/12/23',
+    status : <><span class="status-p bg-pen">Pending</span></>,
+    summary :"summery",
+    invoice : 'invoice',
+    waybill : '-'
+
+
+  }
+]    
   return (
     <div className='container' >
       <div className="row">
@@ -50,7 +145,13 @@ function Order() {
       </div>
       <hr />
       <div className="row">
-        
+        <DataTableExtensions columns ={columns} data ={data} >
+          <DataTable 
+          columns={columns}
+          data = {data}
+          pagination/>
+        </DataTableExtensions>
+
       </div>
     </div>
 
