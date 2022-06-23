@@ -13,10 +13,7 @@ function BussinessDetails() {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [id, setId] = useState("");
-  const [gstNumber, setgstNumber] = useState("");
-  const [businessName, setBusinessName] = useState("");
-  const [panNumber, setPanNumber] = useState("");
-  const [files, setFiles] = useState("");
+  
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -34,32 +31,8 @@ function BussinessDetails() {
     const id = resp.id
     console.log(id)
     setId(id);
+    navigate('/bu')
   };
-
-
-
-
-  const onhandleChange = async (e) => {
-
-    const formData = new FormData();
-    formData.append('addressId', id)
-    formData.append('gstNumber', gstNumber);
-    formData.append('businessName', businessName);
-    formData.append('panNumber', panNumber);
-    formData.append('signatureImage', files);
-
-    try {
-      var result = await axios.post(BUS_URL, formData)
-
-      result = await result.data
-      console.log(result)
-
-    } catch {
-    
-    }
-
-
-  }
 
   return (
     <>
@@ -68,7 +41,7 @@ function BussinessDetails() {
           <div className="sectionclassName">
             <h1 className="h1Text">Give your Business Details</h1>
             <div className="formconatiner1">
-              <form name="form" onSubmit={onSubmit}>
+              <form name="form" >
                 <div className="formleft">
                   <p className="ptext">Your Bussiness Address </p>
                   <div className="form_wrap">
@@ -119,7 +92,7 @@ function BussinessDetails() {
                     </div>
                   </div>
                   <div className="btn1">
-                    <input type="submit" value="Continue" />
+                    <input type="submit" value="Continue" onClick={onSubmit()} />
                   </div>
                 </div>
               </form>
@@ -168,7 +141,6 @@ function BussinessDetails() {
                   </div>
                 </div>
               </form>
-
 
             </div>
           </div>

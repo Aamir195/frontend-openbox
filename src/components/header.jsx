@@ -25,7 +25,7 @@ function Navbar() {
               <Link to="/list-product">Product List</Link>
             </li>
             <li>
-              <Link to='/login'>Inventory</Link>
+              <Link to='/inventory'>Inventory</Link>
             </li>
             <li>
               <Link to='/Register'>Order</Link>

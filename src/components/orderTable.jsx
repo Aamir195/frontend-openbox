@@ -1,80 +1,111 @@
-// import React from 'react'
-// import DataTable from 'react-data-table-component';
-// import DataTableExtensions from "react-data-table-component-extensions";
-// const columns = [
-//     {
-//         name: "Sr no.",
-//         selector: "sr",
-//         sortable: "true"
-//     },
-//     {
+import React from 'react';
+import Images from '../images';
+import { Switch } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-//         name: "Order Id",
-//         selector: "orderid",
-//         sortable: true
-//     },
-//     {
-//         name: "User",
-//         selector: "user",
-//         sortable: true
-//     },
-//     {
-//         name: "Gift Order",
-//         selector: "gift order",
-//         sortable: true,
-//         //   cell: d => <span>{d.genres.join(", ")}</span>
-//     },
-//     {
-//         name: "Qunatity",
-//         selector: "year",
-//         sortable: true
-//     },
-//     {
-//         name: "Total Amount",
-//         selector: "year",
-//         sortable: true
-//     }, {
-//         name: "Date",
-//         selector: "year",
-//         sortable: true
-//     },
-//     {
-//         name: "Order Status",
-//         selector: "year",
-//         sortable: true
-//     },
-//     {
-//         name: "Summary",
-//         selector: "year",
-//         sortable: true
-//     },
-//     {
-//         name: "Invoice",
-//         selector: "year",
-//         sortable: true
-//     },
-//     {
-//         name: "WayBill",
-//         selector: "year",
-//         sortable: true
-//     },
-// ];
+export const columns = [
+    {
+      name: "Product Image",
+      selector: "productImage",
+      sortable: true
+    },
+    {
+      name: "Product Name",
+      selector: "productName",
+      sortable: true
+    },
+    {
+      name: "Quantity",
+      selector: "quantity",
+      sortable: true,
 
-// const data = {
+    },
+    {
+      name: "Price",
+      selector: "price",
+      sortable: true
+    },
+    {
+      name: "Edit",
+      selector: "edit",
 
-// }
+    },
+    // {
+    //   name: "View",
+    //   selector: "view",
 
-// function Ordertable() {
-//     return (
-//         <DataTableExtensions>
-//             <DataTable pagination />
+    // },
+    {
+      name: "Enable/Disable",
+      selector: "enb",
 
-//         </DataTableExtensions>
+    },
+  ];
 
+  export const data = [
+    {
+      id: 1,
+      productImage: <img src={Images.logo} alt="" srcset="" height={50} />,
+      productName: "IPHONE 11",
+      quantity: "123",
+      price: "230000",
+      edit:
+        <Link to='/inventory/edit'><button type='button' className='btn btn-primary' >Edit</button></Link>,
+      // view:
+      //   <button type='button' className='btn btn-info' onclick = {naviagte('/inventory/view')}  >View</button>,
+      enb: <>
+        <div class="form-check">
+          <Switch
+            // checked={checked}
+            // onChange={handleChange}
+            inputProps={{ 'aria-label': 'controlled' }}
+          />
+          <label className="form-check-label" htmlFor="flexCheckDefault">
+            Disable
+          </label>
+        </div>
+      </>
 
+    },
+    {
+      id: 1,
+      productImage: <img src={Images.logo} alt="" srcset="" height={50} />,
+      productName: "IPHONE 11",
+      quantity: "123",
+      price: "230000"
 
+    },
+    {
+      id: 2,
+      productImage: <img src={Images.logo} alt="" srcset="" height={50} />,
+      productName: "IPHONE 11",
+      quantity: "123",
+      price: "230000"
 
-//     )
-// }
+    },
+    {
+      id: 3,
+      productImage: <img src={Images.logo} alt="" srcset="" height={50} />,
+      productName: "IPHONE 11",
+      quantity: "123",
+      price: "230000"
 
-// export default Ordertable
+    },
+    {
+      id: 4,
+      productImage: <img src={Images.logo} alt="" srcset="" height={50} />,
+      productName: "IPHONE 11",
+      quantity: "123",
+      price: "230000"
+
+    },
+    {
+      id: 5,
+      productImage: <img src={Images.logo} alt="" srcset="" height={50} />,
+      productName: "IPHONE 11",
+      quantity: "123",
+      price: "230000"
+
+    },
+
+  ];

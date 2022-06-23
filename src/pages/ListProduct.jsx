@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
-import DataTableExtensions from 'react-data-table-component-extensions'
+
 import Images from '../images/index';
 import "react-data-table-component-extensions/dist/index.css";
 // import axios from 'axios';
@@ -185,7 +185,7 @@ function ListProduct() {
             <hr />
             <div className="section">
                 <div className="row">
-                    <DataTableExtensions {...tableData}>
+                   
                         <DataTable
                             // title = "All Products"
                             columns={columns}
@@ -197,7 +197,7 @@ function ListProduct() {
                             fixedHeader
                             fixedHeaderScrollHeight='660px'
                         />
-                    </DataTableExtensions>
+                    
 
 
 
