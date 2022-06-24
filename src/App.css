@@ -876,6 +876,10 @@ form.form-inline button.btn.btn-primary.mb-2 {
   display: inline-block;
   margin: 10px;
 }
+
+.datagrid-style{
+  padding-bottom: 1%;
+}
 /* list Product ends here  */
 
 #cell-1 img {

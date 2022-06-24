@@ -1,210 +1,194 @@
-import React, { useEffect, useState } from 'react'
-import DataTable from 'react-data-table-component';
-
-import Images from '../images/index';
+import React from "react";
+import { useEffect, useState } from "react";
+// import DataTable from "react-data-table-component";
+// import DataTableExtensions from "react-data-table-component-extensions";
+// import Images from "../images/index";
 import "react-data-table-component-extensions/dist/index.css";
-// import axios from 'axios';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import axios from "axios";
+import { DataGrid } from "@mui/x-data-grid";
+import { Link } from "react-router-dom";
+// import "./listproductt.css";
 
+var deep = 0;
+const Listproduct = () => {
 
-const columns = [
-    {
-        name: "Sr no.",
-        selector: "sr",
-        sortable: "true"
-    },
-    {
-        name: "Product Image",
-        selector: "productImage",
-        sortable: "true"
-    },
-    {
-        name: "Product Name",
-        selector: "productName",
-        sortable: "true"
-    },
-    {
-        name: "Prodcuct Description",
-        selector: "prodcuctDescription",
-        sortable: "true"
-    },
-    {
-        name: "Add to sell",
-        selector: "addToSell",
-        sortable: "true"
-    },
-]
-const data = [
-    {
-        id: 1,
-        sr: 1,
-        productImag: <img src={Images.logo} alt="" srcset="" />,
-        productName: "IPHONE 11",
-        prodcuctDescription: "IPHONE 11 IS GOOD.",
-        addToSell: <button type='button' className='btn btn-primary' > Add to sell</button>
-
-    },
-    {
-        id: 2,
-        sr: 2,
-        productImag: <img src={Images.logo} alt="" srcset="" />,
-        productName: "IPHONE 11",
-        prodcuctDescription: "IPHONE 11 IS GOOD.",
-        addToSell: <button type='button' className='btn btn-primary' > Add to sell</button>
-
-    },
-    {
-        id: 3,
-        sr: 3,
-        productImag: <img src={Images.logo} alt="" srcset="" />,
-        productName: "IPHONE 11",
-        prodcuctDescription: "IPHONE 11 IS GOOD.",
-        addToSell: <button type='button' className='btn btn-primary' > Add to sell</button>
-
-    },
-    {
-        id: 4,
-        sr: 4,
-        productImag: <img src={Images.logo} alt="" srcset="" />,
-        productName: "IPHONE 11",
-        prodcuctDescription: "IPHONE 11 IS GOOD.",
-        addToSell: <button type='button' className='btn btn-primary' > Add to sell</button>
-
-    },
-    {
-        id: 5,
-        sr: 5,
-        productImag: <img src={Images.logo} alt="" srcset="" />,
-        productName: "IPHONE 11",
-        prodcuctDescription: "IPHONE 11 IS GOOD.",
-        addToSell: <button type='button' className='btn btn-primary' > Add to sell</button>
-
-    },
-    {
-        id: 6,
-        sr: 6,
-        productImag: <img src={Images.logo} alt="" srcset="" />,
-        productName: "IPHONE 11",
-        prodcuctDescription: "IPHONE 11 IS GOOD.",
-        addToSell: <button type='button' className='btn btn-primary' > Add to sell</button>
-
-    },
-    {
-        id: 7,
-        sr: 7,
-        productImag: <img src={Images.logo} alt="" srcset="" />,
-        productName: "IPHONE 11",
-        prodcuctDescription: "IPHONE 11 IS GOOD.",
-        addToSell: <button type='button' className='btn btn-primary' > Add to sell</button>
-
-    },
-    {
-        id: 8,
-        sr: 8,
-        productImag: <img src={Images.logo} alt="" srcset="" />,
-        productName: "IPHONE 9",
-        prodcuctDescription: "IPHONE 11 IS GOOD.",
-        addToSell: <button type='button' className='btn btn-primary' > Add to sell</button>
-
-    },
-]
-const tableData = {
-    columns,
-    data
-};
-
-function ListProduct() {
-
-
+    const [subitem, setsubItem] = useState([]);
+    const [item, setItem] = useState([]);
     const [category, setCategory] = useState([]);
-    const [categoryId, setCategoryid] = useState('')
-    // const [subCategory, setSubcategory] = useState([]);
+    const [categoryId, setcategoryID] = useState();
+    const [subcategoryId, setsubcategoryID] = useState();
+    const [value, setValue] = useState("");
+    const [subvalue, setsubValue] = useState("");
 
     useEffect(() => {
-
-        const getCategory = async () => {
-            const resp = await fetch('http://localhost:9000/api/category/getAllCategory');
-            const getCat = await resp.json();
-            console.log(getCat)
-            setCategory(await getCat);
-        }
-        getCategory();
-
+        fetchCategory();
     }, []);
 
-    const handleCategory = (event) => {
-        const getCategoryId = event.target.value;
-        console.log(getCategoryId);
-        setCategoryid(getCategoryId);
-    }
+    const handleChange = (e) => {
+        setcategoryID(e.target.value);
+        console.log(e.target);
+        deep = e.target.value;
+        setValue(e.target.value);
+        fetchsubCategory(e.target.value);
 
+    };
+
+    const handlesubChange = (e) => {
+        setsubcategoryID(e.target.value);
+        console.log(e.target);
+        setsubValue(e.target.value);
+        console.log(deep)
+        fetchProductByCatsubcatId(e.target.value, deep);
+    };
+
+
+    const fetchCategory = async () => {
+        var result = await fetch(
+            "http://localhost:8000/api/category/getAllCategory"
+        );
+        var temp = await result.json();
+        console.log(temp);
+        setItem(temp);
+    };
+
+    const fetchsubCategory = async (id) => {
+        var result = await axios.post(
+            "http://localhost:9000/api/subcategory/getsubCategoryByCategoryId",
+            { categoryId: id }
+        );
+        var ans = await result.data;
+        setsubItem(ans);
+    };
+
+    //fetch product bycategoryandsubcategory by id
+    const [product, setProduct] = useState([]);
+
+    const fetchProductByCatsubcatId = async (id, temp) => {
+        var result = await axios.post(
+            "http://localhost:9000/api/product/getProductbyCategoryIdsubCategoryId",
+            { categoryId: temp, subCategoryId: id }
+        );
+        var ans = await result.data;
+        console.log(result.data);
+        setProduct(ans)
+    };
+
+    const userColumns = [
+        { field: "id", headerName: "ID", width: 70 },
+        { field: "productName", headerName: "productName", width: 200 },
+        {
+            field: "productDescription",
+            headerName: "productDescription",
+            width: 200,
+        },
+        { field: "color", headerName: "color", width: 350 },
+        { field: "highlightFeature", headerName: "highlightFeature", width: 300 },
+        //{ field: "description", headerName: "Description", width: 400}
+    ];
+
+    const actionColumn = [
+        {
+            field: "action",
+            headerName: "Action",
+            width: 200,
+            renderCell: (params) => {
+                return (
+                    <div className="cellAction">
+                        <Link
+                            to={"/subcategary/view/" + params.row.id}
+                            style={{ textDecoration: "none" }}
+                        >
+                            <div className="viewButton">Add To sell</div>
+                        </Link>
+                    </div>
+                );
+            },
+        },
+    ];
 
     return (
         <div className="container">
-            <div className="">
-                <div className="row">
-                    <div className="headingText">
-                        <h2>List your Product </h2>
-                    </div>
-                </div>
-                <div className='container'>
-                    <div className="row">
-                        <form className="form-inline">
-                            <div className="col-md-6 col-sm-12 mb-2">
-                                <div className="form-group">
-                                    <label htmlFor="category" className="sr-only">Select Category {categoryId} </label>
-                                    <select className="form-select" aria-label="Default select example" onChange={(e) => handleCategory(e)} >
-                                        <option selected disabled >Select Category</option>
-                                        {
-                                            category.map((cat) => (
-                                                <option key={cat.id} value={cat.id} >{cat.categoryName}</option>
-                                            ))
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="col-md-6 col-sm-12 mb-2">
-                                <div className="form-group">
-                                    <label htmlFor="category" className="sr-only">Select Category</label>
-                                    <select className="form-select" aria-label="Default select example">
-                                        <option >Select Category</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" className="btn btn-primary mb-2">Show product</button>
-                        </form>
-
+            <div className="row">
+                <div className="datasub">
+                    <div className="datasubTitle">
+                        <h2> List your Product</h2>
                     </div>
 
-                </div>
-            </div>
-            <hr />
-            <div className="section">
-                <div className="row">
-                   
-                        <DataTable
-                            // title = "All Products"
-                            columns={columns}
-                            data={data}
-                            defaultSortField="id"
-                            defaultSortAsc={false}
-                            pagination
-                            highlightOnHover
-                            fixedHeader
-                            fixedHeaderScrollHeight='660px'
-                        />
-                    
+                    <div className="bodycat ">
+                        
 
+                        <Box className="datagrid-style">
+                        {/* <label htmlFor="category" className="sr-only">
+                            Select Category {categoryId}
+                        </label> */}
+
+                            <FormControl sx={{ m: 1, minWidth: 100 }}>
+                            <InputLabel id="demo-simple-select-autowidth-label" >
+                                Sub-Category
+                                </InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={value}
+                                    label="Cat"
+                                    style={{ width: 470 }}
+                                    onChange={handleChange}
+                                >
+                                    {item.map((i) => (
+                                        <MenuItem value={i.id} key={i.id}>
+                                            {i.categoryName}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                       
+                        
+                        {/* <label htmlFor="category" className="sr-only">
+                             {subcategoryId}
+                        </label> */}
+
+                            <FormControl sx={{ m: 1, minWidth: 100 }}>
+                                <InputLabel id="demo-simple-select-autowidth-label" >
+                                Sub-Category
+                                </InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={subvalue}
+                                    label="Cat"
+                                    style={{ width: 470 }}
+                                    onChange={handlesubChange}
+                                >
+                                    {subitem.map((i) => (
+                                        <MenuItem value={i.id} key={i.id}>
+                                            {i.subcategoryName}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </div>
+
+                    <DataGrid
+                        className="datagrid"
+                        rows={product}
+                        columns={userColumns.concat(actionColumn)}
+                        pageSize={8}
+                        rowsPerPageOptions={[10]}
+                    //checkboxSelection
+                    />
 
 
                 </div>
             </div>
         </div>
-    )
-}
 
-export default ListProduct
+    );
+};
+
+export default Listproduct;
