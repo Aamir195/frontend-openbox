@@ -33,6 +33,9 @@ function Navbar() {
                   <li>
                     <Link to='/inventory'>Inventory</Link>
                   </li>
+                  <li>
+                    <Link to='/order'>Order</Link>
+                  </li>
                 </> :
                 <>
                   <li>

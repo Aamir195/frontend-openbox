@@ -4,6 +4,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import 'react-data-table-component-extensions/dist/index.css';
+import { Box } from '@mui/material';
 // import { useNavigate, Link } from "react-router-dom";
 
 
@@ -13,12 +14,13 @@ function Inventrory() {
   // const naviagte = useNavigate();
   const [product, setProduct] = useState('');
 
-  useEffect(() => {
-    fetchProduct();
-  }, []);
+  
 
   let id = localStorage.getItem('id');
   console.log(id);
+  useEffect(() => {
+    fetchProduct(id);
+  }, []);
 
   const fetchProduct = async (e) => {
     var result = await axios.post(url, {
@@ -51,7 +53,7 @@ function Inventrory() {
         return (
           <div className="cellAction">
             <Link
-              to={"/subcategary/view/" + params.row.id}
+              to={"/inventory/edit" + params.row.id}
               style={{ textDecoration: "none" }}
             >
               <div className="viewButton">Add To sell</div>
@@ -71,11 +73,7 @@ function Inventrory() {
               Your Listed Product  {id}
             </h3>
           </div>
-         
-            
-         
-        </div>
-      </div>
+          <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
               className="datagrid"
               rows={product}
@@ -84,6 +82,13 @@ function Inventrory() {
               rowsPerPageOptions={[10]}
             //checkboxSelection
             />
+      </Box>
+         
+            
+         
+        </div>
+      </div>
+      
 
     </>
   )

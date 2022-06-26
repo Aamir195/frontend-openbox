@@ -103,7 +103,8 @@ const Listproduct = () => {
                             to={"/subcategary/view/" + params.row.id}
                             style={{ textDecoration: "none" }}
                         >
-                            <div className="viewButton">Add To sell</div>
+                            <div className="btn1">Add To sell</div>  {/* className Changed  */}
+                           
                         </Link>
                     </div>
                 );
@@ -145,9 +146,7 @@ const Listproduct = () => {
                                         </MenuItem>
                                     ))}
                                 </Select>
-                            </FormControl>
-                       
-                        
+                            </FormControl>                                            
                         {/* <label htmlFor="category" className="sr-only">
                              {subcategoryId}
                         </label> */}
@@ -173,7 +172,6 @@ const Listproduct = () => {
                             </FormControl>
                         </Box>
                     </div>
-
                     <DataGrid
                         className="datagrid"
                         rows={product}
@@ -182,8 +180,6 @@ const Listproduct = () => {
                         rowsPerPageOptions={[10]}
                     //checkboxSelection
                     />
-
-
                 </div>
             </div>
         </div>

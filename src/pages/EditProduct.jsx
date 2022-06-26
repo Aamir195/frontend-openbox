@@ -9,7 +9,7 @@ function EditProduct() {
           <div className="card">
 
             <div className="card-body">
-              <h5 class="card-title">Edit Your Product</h5>
+              <h5 class="card-title">Edit Product</h5>
               <div className="row">
                 <div className="details">
                   <img src={Images.logo} alt="" height={100} />
