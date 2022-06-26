@@ -10,80 +10,89 @@ function Order() {
     {
       field: "id",
       headerName: "SR. No",
+      
 
     },
     {
 
       headerName: "Order Id",
       field: "orderid",
+     
 
     },
     {
       headerName: "User Name",
       field: "user",
       width: 200,
+     
 
     },
-    {
-      headerName: "Gift Order",
-      field: "giftOrder",
-      
-
-      //   cell: d => <span>{d.genres.join(", ")}</span>
-    },
+  
     {
       headerName: "Qunatity",
       field: "qunaity",
-
+      width: 200,
+     
     },
     {
       headerName: "Total Amount",
       field: "amount",
+      width: 200,
+     
 
     },
     {
       headerName: "Date",
       field: "date",
+      width: 150,
+     
 
     },
     {
       headerName: "Order Status",
       field: "status",
-      width: 150,
-
-    },
-    {
-      headerName: "Summary",
-      field: "summary",
+      width: 200,
       
 
     },
-    {
-      headerName: "Invoice",
-      field: "invoice",
-
-    },
-    {
-      headerName: "WayBill",
-      field: "waybill",
-
-    },
+    
+    
   ];
+  const actionColumn = [
+    {
+        field: "action",
+        headerName: "Summary",
+        width: 100,
+        // flex : 1,
+        renderCell: (params) => {
+            return (
+                <div className="cellAction">
+                    <Link
+                        to={"/order-details/" + params.row.id}
+                        style={{ textDecoration: "none" }}
+                    >
+                        <div className="btn1">Summary</div>  {/* className Changed  */}
+                       
+                    </Link>
+                </div>
+            );
+        },
+    },
+];
 
   const rows = [
     {
       id: 1,
       sr: '1',
       orderid: "123",
-      user: <Link to='/order-detail'>Faf du plesis</Link>,
+      user: "Faf du plesis",
       giftOrder: 'No',
       qunaity: '5',
       amount: '1234',
       date: '11/12/23',
       status: <><span class="status-p bg-correct">Delivered</span></>,
-      summary: "summery",
-      invoice: 'invoice',
-      waybill: '-'
+      
+      
 
     },
     {
@@ -96,9 +105,7 @@ function Order() {
       amount: '1234',
       date: '11/12/23',
       status: <><span class="status-p bg-pen">Pending</span></>,
-      summary: "summery",
-      invoice: 'invoice',
-      waybill: '-'
+      
 
 
     }
@@ -152,7 +159,7 @@ function Order() {
       <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
           rows={rows}
-          columns={columns}
+          columns={columns.concat(actionColumn)}
           pageSize={5}
           rowsPerPageOptions={[5]}
         /> 
