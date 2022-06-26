@@ -58,7 +58,7 @@ const Listproduct = () => {
 
     const fetchsubCategory = async (id) => {
         var result = await axios.post(
-            "http://localhost:9000/api/subcategory/getsubCategoryByCategoryId",
+            "http://localhost:8000/api/subcategory/getsubCategoryByCategoryId",
             { categoryId: id }
         );
         var ans = await result.data;
@@ -70,7 +70,7 @@ const Listproduct = () => {
 
     const fetchProductByCatsubcatId = async (id, temp) => {
         var result = await axios.post(
-            "http://localhost:9000/api/product/getProductbyCategoryIdsubCategoryId",
+            "http://localhost:8000/api/product/getProductbyCategoryIdsubCategoryId",
             { categoryId: temp, subCategoryId: id }
         );
         var ans = await result.data;
@@ -172,6 +172,7 @@ const Listproduct = () => {
                             </FormControl>
                         </Box>
                     </div>
+                    <Box sx={{ height: 400, width: '100%' }}>
                     <DataGrid
                         className="datagrid"
                         rows={product}
@@ -180,6 +181,7 @@ const Listproduct = () => {
                         rowsPerPageOptions={[10]}
                     //checkboxSelection
                     />
+                    </Box>
                 </div>
             </div>
         </div>
