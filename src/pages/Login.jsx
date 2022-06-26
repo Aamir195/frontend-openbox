@@ -23,6 +23,7 @@ function Login() {
         console.log(result)
 
         // console.log(result[0].id)
+        localStorage.setItem("user-info", result)
         localStorage.setItem("id", (result.id));
         navigate('/dashboard', { replace: true });
 

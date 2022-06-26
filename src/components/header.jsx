@@ -7,6 +7,7 @@ import Images from '../images/index'
 function Navbar() {
   return (
 
+
     <section className="navigation sticky-top">
       <div className="nav-container ">
         <div className="brand">
@@ -15,25 +16,40 @@ function Navbar() {
               height={40} />
           </a>
         </div>
+
         <nav>
+
           <div className="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
           <ul className="nav-list">
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/list-product">Product List</Link>
-            </li>
-            <li>
-              <Link to='/inventory'>Inventory</Link>
-            </li>
-            <li>
-              <Link to='/Register'>Order</Link>
-            </li>
+            {
+              localStorage.getItem("user-info") ?
+                <>
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link to="/list-product">Product List</Link>
+                  </li>
+                  <li>
+                    <Link to='/inventory'>Inventory</Link>
+                  </li>
+                </> :
+                <>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Login</Link>
+                  </li>
+                </>
+            }
           </ul>
         </nav>
       </div>
     </section>
+
+
+
 
 
 

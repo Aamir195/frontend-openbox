@@ -13,6 +13,7 @@ import PickupAddress from './pages/PickupAddress';
 import Navbar from './components/header';
 import Order from './pages/Order'
 import OrderDetails from './pages/orderDetails'
+import Home from './pages/Home';
 // import Home from './pages/Home';
 import Inventrory from './pages/Inventrory';
 import ListProduct from './pages/ListProduct';
@@ -30,6 +31,7 @@ function App() {
         <Navbar />
 
         <Routes>
+          <Route path = {'/' || '/home'} element = {<Home/>}/>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/order' element={<Order />} />
           <Route path='/order-details' element={<OrderDetails />} />
