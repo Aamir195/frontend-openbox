@@ -1,10 +1,10 @@
 import React from 'react'
+import Ananlytics from '../components/ananlytics'
 
 function Dashboard() {
   return (
-    <div>
-      hhhhhhhhhhhh
-      <h1>hhhhhh</h1>
+    <div className="container ">
+     <Ananlytics/>
     </div>
   )
 }

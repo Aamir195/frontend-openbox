@@ -1,31 +1,33 @@
 import axios from "axios";
-const API_URL = "http://localhost:8000/api/vendor/";
-const register = (username, email, phone, password) => {
-  return axios.post(API_URL + "addVendor", {
-    username,
-    email,
-    phone,
-    password,
-  });
-};
-const login = (email, password) => {
-  return axios
-    .post(API_URL + "verifyVendor", {
+const API_URL = "http://localhost:8080/";
+
+class AuthService {
+  login(email, password) {
+    return axios
+      .post(API_URL + "signin", {
+        email,
+        password
+      })
+      .then(response => {
+        if (response.data.accessToken) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+        return response.data;
+      });
+  }
+  logout() {
+    localStorage.removeItem("user");
+  }
+  register(name, email,phone, password) {
+    return axios.post(API_URL + "signup", {
+      name,
       email,
-      password,
-    })
-    .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-      return response.data;
+      phone,
+      password
     });
-};
-const logout = () => {
-  localStorage.removeItem("user");
-};
-export default {
-  register,
-  login,
-  logout,
-};
+  }
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem('user'));;
+  }
+}
+export default new AuthService();
