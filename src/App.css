@@ -63,6 +63,10 @@ code {
 
 a {
   text-decoration: none;
+  color: #EC9358;
+}
+Link{
+  text-decoration: none;
 }
 
 li {
@@ -892,12 +896,31 @@ img {
 }
 
 /* Inventory  */
+.cellAction {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.cellAction viewButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: darkblue;
+  border: 1px dotted rgba(0, 0, 139, 0.596);
+  cursor: pointer;
+}
+.cellAction .deleteButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: crimson;
+  border: 1px dotted rgba(220, 20, 60, 0.6);
+  cursor: pointer;
+}
+
+/* inventory ends here  */
 
 /* edit Inventory  */
 
-.customer {
-  padding-top: 2%;
-}
+
 
 h4 {
 
@@ -925,35 +948,20 @@ font-family: 'poppins';
 
 
 /* order details  */
-
-.container1 {
-  display: flex;
-  width: 100%;
+.customer {
+  padding: 2%;
+}
+h5{
+  font-size: 14px;
+  color: #f5c904;
+  font-weight: bolder;
+  font-family: 'poppins';
+}
+p{
+  font-weight: 500;
+  font-family: 'poppins';
 }
 
-.column-1 {
-  flex-shrink: 0; /* shrinks to 0 to apply 70% width*/
-  flex-basis: 70%; /* sets initial width to 70%*/
-}
-
-.box {
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  border: 2px solid rgb(116, 113, 113);
-  /* margin: 1rem;
-  box-shadow: 1px 1px 1px #000; */
-}
-
-@media only screen and (max-width: 900px) {
-  .container1 {
-    flex-direction: column;
-  }
-
-  .box {
-    margin: 0 0 1rem;
-  }
-}
 
 
 /* order details  */

@@ -94,7 +94,7 @@ function orderDetails() {
         </nav>
       </div>
       <div className="row">
-        <h2>Summary</h2>
+        <h4>Summary</h4>
       </div>
       <div className="row">
         <Box sx={{ height: 400, width: '100%' }}>
@@ -105,30 +105,85 @@ function orderDetails() {
             rowsPerPageOptions={[5]}
           />
         </Box>
-        <div class="container1">
-          <div class="column-1 box">
-            <h1>ggggg em Ipsum?</h1>
-            <p>
-              What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing
-              and typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has survived
-              not only five centuries, but also the leap into electronic
-              typesetting, remaining essentially unchanged
-            </p>
+        <div className="customer">
+          <div className="card">
+            <div className="card-body">
+              <h4 class="card-title">Total Calculation </h4>
+              <hr />
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <td><p>Total Net Amount</p></td>
+                    <td>
+                     <p>₹ 2300</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Total Shipping</p>
+                    </td>
+                    <td>
+                      <p>
+                     ₹ 00
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>
+                      Billing Total
+                      </p>
+                    </td>
+                    <td>
+                    <p> ₹ 2300</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
           </div>
-          <div class="column-2 box">
-            <h1>What is Lorem Ipsum?</h1>
-            <p>
-              What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing
-              and typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has survived
-              not only five centuries, but also the leap into electronic
-              typesetting, remaining essentially unchanged
-            </p>
-          </div>
+
         </div>
+
+        <div className="customer">
+          <div className="card">
+
+            <div className="card-body">
+              <h4 class="card-title">Customer Details </h4>
+              <hr />
+              <div className="container">
+                <div class="row">
+                  <div class="col-md-6" >
+                    <h5>
+                      Customer Name :
+                    </h5>
+                    <p>Deepak Mishra</p>
+                    <h5>
+                      Mobile Number :
+                    </h5>
+                    <p>9867543123</p>
+                    <h5>
+                      Email Address :
+                    </h5>
+                    <p>deepakMota@gmail.com</p>
+                  </div>
+                  <div class="col-md-6" >
+                    <h5>
+                      Address :
+                    </h5>
+                    <p>
+                      Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-5678.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
 
       </div>
     </div>

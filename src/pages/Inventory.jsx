@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import 'react-data-table-component-extensions/dist/index.css';
 import { Box } from '@mui/material';
 import EditProduct from './EditProduct';
-import "./inventory.scss"
+// import "./inventory.scss"
 // import { useNavigate, Link } from "react-router-dom";
 
 

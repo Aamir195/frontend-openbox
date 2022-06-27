@@ -12,13 +12,12 @@ import PickupAddress from './pages/PickupAddress';
 import Navbar from './components/header';
 import Order from './pages/Order'
 import OrderDetails from './pages/orderDetails'
-// import Home from './pages/Home';
+import Home from './pages/Home';
 import NewProduct from './pages/NewProduct';
 import Inventory from './pages/Inventory';
 import ListProduct from './pages/ListProduct';
 import EditProduct from './pages/EditProduct';
-import ViewProduct from './pages/ViewProduct';
-// import Addproduct from './pages/Addproduct';
+
 
 function App() {
   return (
@@ -30,6 +29,7 @@ function App() {
         <Navbar />
 
         <Routes>
+          <Route exect path='/' element = {<Home/>} />
           <Route path='/dashboard' element={<Dashboard />} />
           
           <Route path='/order' element={<Order />} />

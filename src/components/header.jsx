@@ -1,12 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import { faBars } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Images from '../images/index'
 
-function Navbar() {
-  return (
 
+
+function Navbar() {
+
+  let user = localStorage.getItem("user-info")
+  console.log(user);
+  let navigate = useNavigate();
+  
+  const logout = (e) =>{
+    localStorage.removeItem("user-info");
+    navigate("/")
+  }
+
+  return (
 
     <section className="navigation sticky-top">
       <div className="nav-container ">
@@ -36,13 +47,16 @@ function Navbar() {
                   <li>
                     <Link to='/order'>Order</Link>
                   </li>
+                  <li onClick={(e) => logout(e)}>
+                     Logout
+                  </li>
                 </> :
                 <>
                   <li>
                     <Link to="/">Home</Link>
                   </li>
                   <li>
-                    <Link to="/">Login</Link>
+                    <Link to="/login">Login</Link>
                   </li>
                 </>
             }
