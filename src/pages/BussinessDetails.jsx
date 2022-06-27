@@ -7,6 +7,7 @@ function BussinessDetails() {
 
 
     let addressId = localStorage.getItem('addressId');
+    let navigate = useNavigate() ;
     
     // const navigate = useNavigate();
     // const [id, setId] = useState("");
@@ -38,8 +39,9 @@ function BussinessDetails() {
         };
             var result = await axios.post(BUS_URL, formData, config)
 
-            // result = await result.data
-            // console.log(result)
+            result = await result.data
+            console.log(result)
+            navigate("/bank-detail" , {replace : true})
 
         } catch (error) {
             alert(error)

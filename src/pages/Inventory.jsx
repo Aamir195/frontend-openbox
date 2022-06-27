@@ -16,7 +16,7 @@ import { red } from '@mui/material/colors';
 // import { useNavigate, Link } from "react-router-dom";
 
 
-const url = 'http://localhost:9000/api/list/getAllProduct'
+const url = 'http://localhost:8000/api/list/getAllProduct'
 
 function Inventory() {
   const RedSwitch = styled(Switch)(({ theme }) => ({
@@ -39,10 +39,10 @@ function Inventory() {
   const status = async (id) => {
 
     let del = await axios.post(
-      "http://localhost:9000/api/list/editStatus",
+      "http://localhost:8000/api/list/editStatus",
       {
         id,
-        vendorId: 1
+        vendorId: vendor_id
       }
     );
   };
@@ -55,14 +55,13 @@ function Inventory() {
     fetchProduct(vendor_id);
   }, []);
 
-  const fetchProduct = async (id) => {
+  const fetchProduct = async (vendor_id) => {
     var result = await axios.post(url, {
-      id: 1
+      vendor_id
     })
     var temp = await result.data
     console.log(temp);
     setProduct(temp)
-
   };
 
   async function handleEdit(id) {
@@ -80,7 +79,7 @@ function Inventory() {
       setProduct(product.filter((item) => item.id !== id));
 
       let del = await axios.post(
-        "http://localhost:9000/api/list/deleteListById",
+        "http://localhost:8000/api/list/deleteListById",
         {
           id,
           vendorId: 1

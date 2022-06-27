@@ -35,7 +35,7 @@ function BankDetails() {
         alert("Your Data Has been saved.");
       }
       // alert("Your Data HAs been saved.")
-      // navigate('/dashboard', {replace : true});
+      navigate('/dashboard', {replace : true});
 
     }
     catch {

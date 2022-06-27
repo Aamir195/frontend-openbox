@@ -7,6 +7,7 @@ import Dashboard from "../src/pages/Dashboard";
 import Login from './pages/Login';
 import Register from '../src/pages/Register'
 import BankDetail from '../src/pages/BankDetails'
+import BussinessAddressDetails from './pages/BussinessAddressDetails';
 import BussinessDetail from './pages/BussinessDetails';
 import PickupAddress from './pages/PickupAddress';
 import Navbar from './components/header';
@@ -45,6 +46,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/bank-detail' element={<BankDetail />} />
           <Route path='/bussiness-detail' element={<BussinessDetail />} />
+          <Route path='/bussiness-address' element={<BussinessAddressDetails />} />
           <Route path='/pickup-address' element={<PickupAddress />} />
         </Routes>
       </BrowserRouter>

@@ -12,27 +12,31 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+    const [regid, setRegid] = useState('')
 
 
     const onRegister = async (e) => {
         e.preventDefault();
         console.log(name, email, phone, password);
-        try {
-            const resp = axios.post(URL, {
-                name: name,
-                email: email,
-                phone: phone,
-                password: password
+        
+            const resp = await axios.post(URL, {
+                 name,
+                 email,
+                 phone,
+                 password
             });
             // console.log(resp.data);
-            var result = await resp.data;
-            console.log(result);
+            var result = await resp.data
+            setRegid(result.id)
+            console.log(result.id)
+            // console.log(result.data)
+            // console.log(result.data.id)
+            // console.log(result["id"]);
             localStorage.setItem("user-info", result);
+            localStorage.setItem("id", (result.id));
+            // console.log(result.id)
             navigate('/pickup-address', { replace: true })
 
-        } catch (error) {
-            console.log(error.response)
-        }
     }
 
     return (

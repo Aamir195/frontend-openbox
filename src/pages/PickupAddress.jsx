@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import authHeader from "../interceptors/auth-header";
 
-const Login_URL = "http://localhost:8000/api/address/addAddress";
+const URL = "http://localhost:8000/api/address/addAddress";
 
 function PickupAddress() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function PickupAddress() {
     e.preventDefault();
     // console.log(name, email, phone, password);
     try {
-      const resp = axios.post(Login_URL, {
+      const resp = axios.post(URL, {
         lane: lane,
         pincode: pincode,
         city: city,
@@ -25,7 +25,7 @@ function PickupAddress() {
         country: country,
       });
       console.log(resp.data);
-      navigate("/bussiness-detail");
+      navigate("/bussiness-address");
     } catch (error) {
       console.log(error.response);
     }
