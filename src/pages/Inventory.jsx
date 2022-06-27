@@ -7,40 +7,72 @@ import { Link } from "react-router-dom";
 import 'react-data-table-component-extensions/dist/index.css';
 import { Box } from '@mui/material';
 import EditProduct from './EditProduct';
-// import "./inventory.scss"
+// import "./inventory.css"
+import Switch from "@mui/material/Switch";
+
+
+import { alpha, styled } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
 // import { useNavigate, Link } from "react-router-dom";
 
 
 const url = 'http://localhost:9000/api/list/getAllProduct'
 
 function Inventory() {
+  const RedSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: red[900],
+      '&:hover': {
+        backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: red[900],
+    },
+  }));
+
+  async function handleStatus(id) {
+    status(id)
+    window.location.reload()
+  }
+
+  const status = async (id) => {
+
+    let del = await axios.post(
+      "http://localhost:9000/api/list/editStatus",
+      {
+        id,
+        vendorId: 1
+      }
+    );
+  };
   // const naviagte = useNavigate();
   const [product, setProduct] = useState([]);
   let vendor_id = localStorage.getItem('id');
   console.log(vendor_id);
 
   useEffect(() => {
-   fetchProduct(vendor_id);
+    fetchProduct(vendor_id);
   }, []);
 
   const fetchProduct = async (id) => {
     var result = await axios.post(url, {
-     id:1
+      id: 1
     })
     var temp = await result.data
     console.log(temp);
     setProduct(temp)
-   
+
   };
 
-  async function handleEdit (id){
- 
-   //alert("edit: "+id)
-    return(
+  async function handleEdit(id) {
+
+    //alert("edit: "+id)
+    return (
       <div>
         <EditProduct />
       </div>
-      
+
     )
   }
   async function handleDelete(id) {
@@ -49,7 +81,10 @@ function Inventory() {
 
       let del = await axios.post(
         "http://localhost:9000/api/list/deleteListById",
-        { id }
+        {
+          id,
+          vendorId: 1
+        }
       );
 
       del = await del.json();
@@ -58,13 +93,16 @@ function Inventory() {
     }
   }
 
+
+
+
   const userColumns = [
     { field: "id", headerName: "productID", width: 170 },
-    { field: "productName", headerName: "productName", width: 400 },
+    { field: "productName", headerName: "productName", width: 300 },
     { field: "quantity", headerName: "quantity", width: 200 },
     { field: "price", headerName: "price", width: 230 },
   ];
-  
+
 
 
   const actionColumn = [
@@ -75,9 +113,9 @@ function Inventory() {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={"/inventory/edit/"+params.row.id} style={{ textDecoration: "none" }}>
+            <Link to={"/inventory/edit/" + params.row.id} style={{ textDecoration: "none" }}>
               <div className="viewButton"
-              onClick={() => handleEdit(params.row.id)}>Edit</div>
+                onClick={() => handleEdit(params.row.id)}>Edit</div>
             </Link>
             <div
               className="deleteButton"
@@ -85,15 +123,29 @@ function Inventory() {
             >
               Delete
             </div>
-            
+
           </div>
         );
       },
     },
   ];
 
+  const actionStatus = [{
+    field: "status",
+    headerName: "Status",
+    width: 150,
+    renderCell: (params) => {
+      return (
+        <div className="cellAction" >
+          <RedSwitch checked={params.row.isActive == 0 ? true : false} onClick={() => handleStatus(params.row.id)} inputProps={{ 'aria-label': 'controlled' }} />
+          <label >Disable</label>
+        </div>
+      )
+    }
+  }];
 
-  
+
+
 
   return (
     <>
@@ -105,21 +157,21 @@ function Inventory() {
             </h3>
           </div>
           <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
+            <DataGrid
               className="datagrid"
               rows={product}
-              columns={userColumns.concat(actionColumn)}
+              columns={userColumns.concat(actionColumn).concat(actionStatus)}
               pageSize={8}
               rowsPerPageOptions={[10]}
             //checkboxSelection
             />
-      </Box>
-         
-            
-         
+          </Box>
+
+
+
         </div>
       </div>
-      
+
 
     </>
   )

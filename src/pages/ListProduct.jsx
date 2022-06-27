@@ -12,6 +12,7 @@ import InputLabel from "@mui/material/InputLabel";
 import axios from "axios";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
+import NewProduct from "./NewProduct";
 // import "./listproductt.css";
 
 var deep = 0;
@@ -65,6 +66,16 @@ const Listproduct = () => {
         setsubItem(ans);
     };
 
+    async function handleAdd(id) {
+
+        //alert("add: "+id)
+        return (
+            <div>
+                <NewProduct />
+            </div>
+
+        )
+    }
     //fetch product bycategoryandsubcategory by id
     const [product, setProduct] = useState([]);
 
@@ -100,11 +111,11 @@ const Listproduct = () => {
                 return (
                     <div className="cellAction">
                         <Link
-                            to={"/subcategary/view/" + params.row.id}
+                            to={"/list-product/new/" + params.row.id}
                             style={{ textDecoration: "none" }}
                         >
-                            <div className="btn1">Add To sell</div>  {/* className Changed  */}
-                           
+                            <div className="btn1" onClick={() => handleAdd(params.row.id)}>Add To sell</div>  {/* className Changed  */}
+
                         </Link>
                     </div>
                 );
@@ -121,16 +132,16 @@ const Listproduct = () => {
                     </div>
 
                     <div className="bodycat ">
-                        
+
 
                         <Box className="datagrid-style">
-                        {/* <label htmlFor="category" className="sr-only">
+                            {/* <label htmlFor="category" className="sr-only">
                             Select Category {categoryId}
                         </label> */}
 
                             <FormControl sx={{ m: 1, minWidth: 100 }}>
-                            <InputLabel id="demo-simple-select-autowidth-label" >
-                                Sub-Category
+                                <InputLabel id="demo-simple-select-autowidth-label" >
+                                    Sub-Category
                                 </InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -146,14 +157,14 @@ const Listproduct = () => {
                                         </MenuItem>
                                     ))}
                                 </Select>
-                            </FormControl>                                            
-                        {/* <label htmlFor="category" className="sr-only">
+                            </FormControl>
+                            {/* <label htmlFor="category" className="sr-only">
                              {subcategoryId}
                         </label> */}
 
                             <FormControl sx={{ m: 1, minWidth: 100 }}>
                                 <InputLabel id="demo-simple-select-autowidth-label" >
-                                Sub-Category
+                                    Sub-Category
                                 </InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -173,14 +184,14 @@ const Listproduct = () => {
                         </Box>
                     </div>
                     <Box sx={{ height: 400, width: '100%' }}>
-                    <DataGrid
-                        className="datagrid"
-                        rows={product}
-                        columns={userColumns.concat(actionColumn)}
-                        pageSize={8}
-                        rowsPerPageOptions={[10]}
-                    //checkboxSelection
-                    />
+                        <DataGrid
+                            className="datagrid"
+                            rows={product}
+                            columns={userColumns.concat(actionColumn)}
+                            pageSize={8}
+                            rowsPerPageOptions={[10]}
+                        //checkboxSelection
+                        />
                     </Box>
                 </div>
             </div>

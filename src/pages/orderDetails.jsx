@@ -3,83 +3,73 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom'
 import { padding } from '@mui/system';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-function orderDetails() {
-  const columns = [
-    {
-      field: 'id',
-      headerName: "SR No.",
-    },
-    {
-      field: 'productName',
-      headerName: "Product Name",
-      width: 250
-    },
-    {
-      field: 'quantity',
-      headerName: "Quantity",
-      flex: 1
-    },
-    {
-      field: 'unitAmount',
-      headerName: "Unit Amount",
-      flex: 1
-    },
-    {
-      field: 'netAmount',
-      headerName: "Net Amount",
-      flex: 1
-    },
 
-    {
-      field: 'cgst',
-      headerName: "CGST",
-      flex: 1
-    },
-    {
-      field: 'sgst',
-      headerName: "SGST",
-      flex: 1
-    },
-    {
-      field: 'igst',
-      headerName: "IGST",
-      flex: 1
-    },
-    {
-      field: 'totalAmount',
-      headerName: "Total Amount",
-      flex: 1
-    },
-  ];
+const Orderdetails = () => {
+  const params = useParams();
+  const navigate = useNavigate();
+  const [productName, setProductname] =useState("")
+  const [quantity, setQuantity] =useState("")
+  const [amount, setAmount] =useState("")
+  const [unitprice, setUnitprice] =useState("")
+  const [name, setName] = useState("");
+  const [phone , setPhone] =useState("")
+  const [email ,setEmail] = useState("")
+  const[ lane, setLane]=useState("")
+  const[ city, setCity]=useState("")
+  const[ state, setState]=useState("")
+  const[ country, setCountry]=useState("")
+  const[ pincode, setPincode]=useState("")
+  const[ summary, setSummary]=useState([])
 
-  const rows = [
-    {
-      id: "1",
-      productName: "AMala Hair Oil",
-      quantity: "3",
-      unitAmount: "2300",
-      netAmount: "23000",
-      cgst: "12.8 %",
-      sgst: "12.8 %",
-      igst: "-",
-      totalAmount: "23000"
+  let vendor_id = localStorage.getItem('id')
 
-    },
-    {
-      id: "2",
-      productName: "AMala Hair Oil",
-      quantity: "13",
-      unitAmount: "2300",
-      netAmount: "23000",
-      cgst: "12.8 %",
-      sgst: "12.8 %",
-      igst: "-",
-      totalAmount: "23000"
 
-    }
-  ]
+  useEffect(  () => {
+   getOrderDetails(params.id);
+   getOrderCustomerDetails(vendor_id,params.id)
 
+}, [])
+
+const getOrderDetails = async (id) => {
+
+  var result =await axios.post('http://localhost:9000/api/order/showOrdersProducts', 
+  {orderId:id})
+  var ans = await result.data
+  setSummary(ans)
+
+}
+
+const getOrderCustomerDetails = async (vendor_id,id) => {
+
+  var result =await axios.post('http://localhost:9000/api/order/getCustomerDetails', 
+  { vendorId:1
+    ,id})
+  var result = await result.data
+
+  setName(result[0].name);
+  setPhone(result[0].phone);
+  setEmail(result[0].email);
+  setLane(result[0].lane)
+  setCity(result[0].city)
+  setState(result[0].state)
+  setCountry(result[0].country)
+  setPincode(result[0].pincode)
+
+}
+
+const userColumns = [
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "productName", headerName: "Name", width: 200 },
+  { field: "quantity", headerName: "Quanity", width: 200 },
+  { field: "unitPrice", headerName: "unitPrice", width: 200 },
+  
+  { field: "GST", headerName: "GST", width: 200 },
+  { field: "totalPrice", headerName: "totalPrice", width: 200 }
+]
 
 
   return (
@@ -97,10 +87,10 @@ function orderDetails() {
         <h4>Summary</h4>
       </div>
       <div className="row">
-        <Box sx={{ height: 400, width: '100%' }}>
+        <Box sx={{ height: 400, width: '90%' }}>
           <DataGrid
-            rows={rows}
-            columns={columns}
+            rows={summary}
+            columns={userColumns}
             pageSize={5}
             rowsPerPageOptions={[5]}
           />
@@ -158,22 +148,23 @@ function orderDetails() {
                     <h5>
                       Customer Name :
                     </h5>
-                    <p>Deepak Mishra</p>
+                    <p>{name}</p>
                     <h5>
                       Mobile Number :
                     </h5>
-                    <p>9867543123</p>
+                    <p>{phone}</p>
                     <h5>
                       Email Address :
                     </h5>
-                    <p>deepakMota@gmail.com</p>
+                    <p>{email}</p>
                   </div>
                   <div class="col-md-6" >
                     <h5>
                       Address :
                     </h5>
                     <p>
-                      Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-5678.
+                    <span>{lane} {city} {state}</span> <br />
+                  <span>{country} {pincode} </span>
                     </p>
                   </div>
                 </div>
@@ -190,4 +181,4 @@ function orderDetails() {
   )
 }
 
-export default orderDetails
+export default Orderdetails

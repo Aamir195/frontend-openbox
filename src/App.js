@@ -11,12 +11,13 @@ import BussinessDetail from './pages/BussinessDetails';
 import PickupAddress from './pages/PickupAddress';
 import Navbar from './components/header';
 import Order from './pages/Order'
-import OrderDetails from './pages/orderDetails'
+import Orderdetails from './pages/Orderdetails'
 import Home from './pages/Home';
 import NewProduct from './pages/NewProduct';
 import Inventory from './pages/Inventory';
 import ListProduct from './pages/ListProduct';
 import EditProduct from './pages/EditProduct';
+
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           
           <Route path='/order' element={<Order />} />
-          <Route path='/order-details' element={<OrderDetails />} />
+          <Route path='/order-details/:id' element={<Orderdetails />} />
           <Route path="/list-product" element={<ListProduct />} />
           <Route path='/list-product/new/:id' element={<NewProduct />} />   {/* new product pages and route */}
          
@@ -44,7 +45,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/bank-detail' element={<BankDetail />} />
           <Route path='/bussiness-detail' element={<BussinessDetail />} />
-          <Route path='/pickup-address' element={<PickupAddress />} />j
+          <Route path='/pickup-address' element={<PickupAddress />} />
         </Routes>
       </BrowserRouter>
 
