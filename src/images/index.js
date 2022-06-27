@@ -10,6 +10,7 @@ import gstin from './GSTIN.png';
 import logo from './logo.png';
 import name from './name.png';
 import nameIcon from './nameIcon.png';
+import nameIcon2 from './nameIconv2.png';
 import notFilled from './notFilled.png';
 import pending from './pendingTask.png';
 import Products from './Products.png';
@@ -17,6 +18,12 @@ import profile from './profile.png';
 import shoes from './shoes.png';
 import signature from './signature.png';
 import store from './store.png';
+
+import sellOne from "./homepage/1.png"
+import sellTwo from "./homepage/2.png"
+import sellThree from "./homepage/3.png"
+import appIos from "./homepage/appleApp.png"
+import appAndroid from "./homepage/androidApp.png"
 
 const Images = {
     aadhar,
@@ -37,7 +44,8 @@ const Images = {
     profile,
     shoes,
     signature,
-    store
+    store,
+    sellOne,sellTwo,sellThree,appIos,appAndroid,nameIcon2
 
 }
 

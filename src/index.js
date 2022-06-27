@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import '../src/interceptors/axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "typeface-poppins";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -3,6 +3,7 @@ import './App.css';
 // import 'index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Homepage from "../src/pages/HomePage/Homepage";
 import Dashboard from "../src/pages/Dashboard";
 import Login from './pages/Login';
 import Register from '../src/pages/Register'
@@ -22,13 +23,10 @@ import ViewProduct from './pages/ViewProduct';
 function App() {
   return (
     <div >
-
-
-
       <BrowserRouter>
         <Navbar />
-
         <Routes>
+          <Route path='/' element={<Homepage />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/order' element={<Order />} />
           <Route path='/order-details' element={<OrderDetails />} />
@@ -43,9 +41,6 @@ function App() {
           <Route path='/pickup-address' element={<PickupAddress />} />j
         </Routes>
       </BrowserRouter>
-
-
-
     </div>
   );
 }

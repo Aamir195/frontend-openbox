@@ -7,15 +7,15 @@ import Images from '../images/index'
 function Navbar() {
   return (
 
-    <section className="navigation sticky-top">
-      <div className="nav-container ">
+    <section className="navigation sticky-top ">
+      <div className="nav-container">
         <div className="brand">
           <a href="/home">
             <img src={Images.nameIcon} alt=""
               height={40} />
           </a>
         </div>
-        <nav>
+        <nav >
           <div className="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
           <ul className="nav-list">
             <li>
