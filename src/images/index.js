@@ -17,6 +17,11 @@ import profile from './profile.png';
 import shoes from './shoes.png';
 import signature from './signature.png';
 import store from './store.png';
+import sellOne from "./1.png"
+import sellTwo from "./2.png"
+import sellThree from "./3.png"
+import appIos from "./appleApp.png"
+import appAndroid from "./androidApp.png"
 
 const Images = {
     aadhar,
@@ -37,8 +42,9 @@ const Images = {
     profile,
     shoes,
     signature,
-    store
+    store,
+    sellOne, sellTwo, sellThree, appIos, appAndroid,
 
 }
 
-export default Images ;
+export default Images;

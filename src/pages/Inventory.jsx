@@ -178,3 +178,5 @@ function Inventory() {
 }
 
 export default Inventory
+
+// D:\Aamir\ecommerce\final\openbox\src\pages\Inventory.jsx
