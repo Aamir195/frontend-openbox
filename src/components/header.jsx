@@ -23,7 +23,7 @@ function Navbar() {
       <div className="nav-container ">
         <div className="brand">
           <a href="/home">
-            <img src={Images.nameIcon} alt=""
+            <img src={Images.nameIcon2} alt=""
               height={40} />
           </a>
         </div>

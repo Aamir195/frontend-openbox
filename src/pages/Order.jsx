@@ -5,6 +5,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box } from '@mui/material';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import clsx from 'clsx';
+
 
 function Order() {
   
@@ -90,10 +92,11 @@ const userColumns = [
   { field: "quantity", headerName: "Quanity", width: 200 },
   { field: "amount", headerName: "Amount", width: 200 },
   { field: "Date", headerName: "Date", width: 200 },
-  { field: "orderStatus", headerName: "OrderStatus", width: 200 }
+  { field: "orderStatus", headerName: "OrderStatus"
+  ,width: 200 }
 ]
   return (
-    <div className='container' >
+    <div className='container mt-3' >
       <div className="row">
         <nav aria-label="breadcrumb pname">
           <ol className="breadcrumb">
@@ -102,7 +105,7 @@ const userColumns = [
           </ol>
         </nav>
       </div>
-      <div className="row">
+      <div className="row mt-2">
         <form className="form-inline">
           <div className="col-md-6 col-sm-12 mb-2">
             <div className="form-group">

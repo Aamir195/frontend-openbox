@@ -34,8 +34,8 @@ function Login() {
 
     return (
         <>
-            <div className="wrapper">
-                <div className="form_container">
+            <div className="wrapper regularShadow">
+                <div className="form_container ">
                     <form  >
                         <div className="heading">
                             <h2>Welcome</h2>

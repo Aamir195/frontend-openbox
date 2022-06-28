@@ -97,7 +97,7 @@ const Listproduct = () => {
             headerName: "productDescription",
             width: 200,
         },
-        { field: "color", headerName: "color", width: 350 },
+        { field: "color", headerName: "color", width: 300 },
         { field: "highlightFeature", headerName: "highlightFeature", width: 300 },
         //{ field: "description", headerName: "Description", width: 400}
     ];
@@ -124,7 +124,7 @@ const Listproduct = () => {
     ];
 
     return (
-        <div className="container">
+        <div className="container mt-3">
             <div className="row">
                 <div className="datasub">
                     <div className="datasubTitle">

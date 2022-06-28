@@ -10,6 +10,7 @@ import gstin from './GSTIN.png';
 import logo from './logo.png';
 import name from './name.png';
 import nameIcon from './nameIcon.png';
+import nameIcon2 from './nameIcon2.png';
 import notFilled from './notFilled.png';
 import pending from './pendingTask.png';
 import Products from './Products.png';
@@ -43,7 +44,7 @@ const Images = {
     shoes,
     signature,
     store,
-    sellOne, sellTwo, sellThree, appIos, appAndroid,
+    sellOne, sellTwo, sellThree, appIos, appAndroid,nameIcon2
 
 }
 

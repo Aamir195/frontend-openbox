@@ -148,9 +148,9 @@ function Inventory() {
 
   return (
     <>
-      <div className="main">
+      <div className="main mt-3">
         <div className="container">
-          <div className="row">
+          <div className="row mb-2">
             <h3>
               Your Listed Product  {vendor_id}
             </h3>

@@ -61,19 +61,22 @@ const getOrderCustomerDetails = async (vendor_id,id) => {
 
 }
 
+
 const userColumns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "productName", headerName: "Name", width: 200 },
-  { field: "quantity", headerName: "Quanity", width: 200 },
-  { field: "unitPrice", headerName: "unitPrice", width: 200 },
+  { field: "productName", headerName: "Product Name", width: 200 },
+  { field: "quantity", headerName: "Quanity", width: 100 },
+  { field: "unitPrice", headerName: "Unit Price", width: 150 },
+  { field: "totalPrice", headerName: "Total Price", width: 150 }, 
+  { field: "discount", headerName: "Discount", width: 150 },
   
-  { field: "GST", headerName: "GST", width: 200 },
-  { field: "totalPrice", headerName: "totalPrice", width: 200 }
+  { field: "GST", headerName: "GST", width: 100 },
+  { field: "netPrice", headerName: "Net Price", width: 200 } //totalPrices changes to netPrice
 ]
 
 
   return (
-    <div className="container">
+    <div className="container mt-3">
       <div className="row">
         <nav aria-label="breadcrumb pname">
           <ol className="breadcrumb">
@@ -83,11 +86,11 @@ const userColumns = [
           </ol>
         </nav>
       </div>
-      <div className="row">
+      <div className="row mt-2">
         <h4>Summary</h4>
       </div>
       <div className="row">
-        <Box sx={{ height: 400, width: '90%' }}>
+        <Box sx={{ height: 400, width: '100%' }}>
           <DataGrid
             rows={summary}
             columns={userColumns}
@@ -96,8 +99,8 @@ const userColumns = [
           />
         </Box>
         <div className="customer">
-          <div className="card">
-            <div className="card-body">
+          {/* <div className="card">
+             <div className="card-body">
               <h4 class="card-title">Total Calculation </h4>
               <hr />
               <table class="table table-borderless">
@@ -131,8 +134,8 @@ const userColumns = [
                 </tbody>
               </table>
 
-            </div>
-          </div>
+            </div> 
+          </div>*/}
 
         </div>
 
