@@ -50,7 +50,7 @@ const Listproduct = () => {
 
     const fetchCategory = async () => {
         var result = await fetch(
-            "http://localhost:9000/api/category/getAllCategory"
+            "http://localhost:8000/api/category/getAllCategory"
         );
         var temp = await result.json();
         console.log(temp);
@@ -59,7 +59,7 @@ const Listproduct = () => {
 
     const fetchsubCategory = async (id) => {
         var result = await axios.post(
-            "http://localhost:9000/api/subcategory/getsubCategoryByCategoryId",
+            "http://localhost:8000/api/subcategory/getsubCategoryByCategoryId",
             { categoryId: id }
         );
         var ans = await result.data;
@@ -81,7 +81,7 @@ const Listproduct = () => {
 
     const fetchProductByCatsubcatId = async (id, temp) => {
         var result = await axios.post(
-            "http://localhost:9000/api/product/getProductbyCategoryIdsubCategoryId",
+            "http://localhost:9000/api/list/getAllProductList",   // changed the api 
             { categoryId: temp, subCategoryId: id }
         );
         var ans = await result.data;

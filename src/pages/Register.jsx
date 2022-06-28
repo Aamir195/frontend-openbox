@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Images from '../images/index'
-const URL = 'http://localhost:8000/api/vendor/addVendor'
+const URL = 'http://localhost:9000/api/vendor/addVendor'
 
 
 export default function Register() {

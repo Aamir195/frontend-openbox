@@ -40,7 +40,7 @@ useEffect( () => {
 const getAllOrder = async(id) => {
   var result =await axios.post('http://localhost:9000/api/order/showAllOrders', 
   {
-    vendorId:"1"
+    vendorId:vendor_id
   })
   var ans = await result.data
   console.log(ans)
@@ -78,7 +78,7 @@ const searchOrder = async(xyz) => {
     startDate:startdate,
     endDate:enddate,
     Status:xyz,
-    vendorId:"1"
+    vendorId: vendor_id
   
   })
   var ans = await result.data

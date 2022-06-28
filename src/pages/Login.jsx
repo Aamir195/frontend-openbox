@@ -14,7 +14,7 @@ function Login() {
         console.log(email, password)
         let item = { email, password }
 
-        var result = await axios.post("http://localhost:8000/api/vendor/verifyVendor", {
+        var result = await axios.post("http://localhost:9000/api/vendor/verifyVendor", {
            email, 
            password 
         });

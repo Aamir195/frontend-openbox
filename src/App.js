@@ -12,7 +12,7 @@ import BussinessDetail from './pages/BussinessDetails';
 import PickupAddress from './pages/PickupAddress';
 import Navbar from './components/header';
 import Order from './pages/Order'
-import Orderdetails from './pages/OrderDetails'
+import Orderdetails from './pages/orderDetails'
 import Home from './pages/Home';
 import NewProduct from './pages/NewProduct';
 import Inventory from './pages/Inventory';

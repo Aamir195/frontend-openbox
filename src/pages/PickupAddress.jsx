@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import authHeader from "../interceptors/auth-header";
 
-const URL = "http://localhost:8000/api/address/addAddress";
+const URL = "http://localhost:9000/api/address/addAddress";
 
 function PickupAddress() {
   const navigate = useNavigate();
