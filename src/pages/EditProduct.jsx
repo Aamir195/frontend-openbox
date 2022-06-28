@@ -64,26 +64,36 @@ const EditProduct = () => {
 
   };
 
-
+const discount = 0
   return (
     <div className="container">
       <div className="edit-card">
         <div className="card">
 
-          <div className="card-body">
+          <div className="card-body ">
             <h5 class="card-title">Edit Product</h5>
-            <div className="row">
-              <div className="details">
-                <img src={Images.logo} alt="" height={100} />
-                <h4 className='pname'>Product Name</h4>
-                <h5> {productName}</h5><br />
+            
+            <div className="row p-2">
+                <div className="col-4 d-flex flex-row-reverse align-items-center ">
+                <img className='img-thumbnail' src={Images.logo} alt="" width={300} height={300} />
+                </div>
+                <div className="col-8 border rounded-2 p-3 ">
+                <h5> {productName} </h5><br />
+                  <div className="row">
+                    <div className="col">
+
                 <h4>Product Description</h4>
-                <p>{productDescription} </p>
+      
+                    </div>
+
+                  </div>
+
+                </div>
               </div>
-            </div>
+            
             <div className="row">
               <form className="form-inline">
-                <div className="col-md-6 col-sm-12 mb-2">
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-2">
                   <div className="form-group">
                     <div class="form-outline">
                       <label class="form-label" for="typeNumber">Add number of quantity</label>
@@ -91,11 +101,19 @@ const EditProduct = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6 col-sm-12 mb-2">
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-2">
                   <div className="form-group">
                     <div class="form-outline">
                       <label class="form-label" for="typeNumber">Price</label>
                       <input type="number" value={price} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-2">
+                  <div className="form-group">
+                    <div class="form-outline">
+                      <label class="form-label" for="typeNumber">Discount</label>
+                      <input type="number" value={discount} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
                 </div>
