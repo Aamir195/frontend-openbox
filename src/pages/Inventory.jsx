@@ -42,7 +42,7 @@ function Inventory() {
       "http://localhost:9000/api/list/editStatus",
       {
         id,
-        vendorId: vendor_id
+        vendorId: 1
       }
     );
   };
@@ -57,7 +57,7 @@ function Inventory() {
 
   const fetchProduct = async (vendor_id) => {
     var result = await axios.post(url, {
-      vendor_id
+      id:1
     })
     var temp = await result.data
     console.log(temp);

@@ -63,15 +63,17 @@ const getOrderCustomerDetails = async (vendor_id,id) => {
 
 
 const userColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "id", headerName: "product_ID", width: 70 },
   { field: "productName", headerName: "Product Name", width: 200 },
   { field: "quantity", headerName: "Quanity", width: 100 },
   { field: "unitPrice", headerName: "Unit Price", width: 150 },
-  { field: "totalPrice", headerName: "Total Price", width: 150 }, 
-  { field: "discount", headerName: "Discount", width: 150 },
-  
-  { field: "GST", headerName: "GST", width: 100 },
-  { field: "netPrice", headerName: "Net Price", width: 200 } //totalPrices changes to netPrice
+ 
+  { field: "netAmount", headerName: "Net Price", width: 200 },
+  { field: "taxValue", headerName: "GST", width: 100 },
+   { field: "discount", headerName: "Discount", width: 150 },
+  { field: "totalAmount", headerName: "Total Price", width: 150 }, 
+ 
+  //totalPrices changes to netPrice
 ]
 
 

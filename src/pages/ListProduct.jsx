@@ -90,7 +90,7 @@ const Listproduct = () => {
     };
 
     const userColumns = [
-        { field: "id", headerName: "ID", width: 70 },
+        { field: "id", headerName: "Product_ID", width: 70 },
         { field: "productName", headerName: "productName", width: 200 },
         {
             field: "productDescription",

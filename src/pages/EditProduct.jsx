@@ -14,6 +14,7 @@ const EditProduct = () => {
   const [productDescription, setProductdescription] = useState("")
   const [quantity, setQuantity] = useState("")
   const [price, setPrice] = useState("")
+  const [discount, setDiscount] = useState("")
   const [subcategoryIcon, setImage] = useState("");
   let vendor_id = localStorage.getItem('id')
 
@@ -26,7 +27,7 @@ const EditProduct = () => {
     var result = await axios.post('http://localhost:9000/api/list/getProductDetailsById',
       {
         productId: product_id,
-        vendorId: vendor_id
+        vendorId: 1
       })
     var result = await result.data
 
@@ -44,6 +45,10 @@ const EditProduct = () => {
 
     setPrice(result[0].price);
     console.log(result[0].price)
+ 
+    setDiscount(result[0].discount);
+    console.log(result[0].discount)
+
 
 
   }
@@ -64,7 +69,7 @@ const EditProduct = () => {
 
   };
 
-const discount = 0
+
   return (
     <div className="container">
       <div className="edit-card">
@@ -83,6 +88,9 @@ const discount = 0
                     <div className="col">
 
                 <h4>Product Description</h4>
+                <div>
+                  {productDescription}
+                </div>
       
                     </div>
 
@@ -113,7 +121,7 @@ const discount = 0
                   <div className="form-group">
                     <div class="form-outline">
                       <label class="form-label" for="typeNumber">Discount</label>
-                      <input type="number" value={discount} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
+                      <input type="number" value={discount} onChange={(e) => { setDiscount(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
                 </div>
