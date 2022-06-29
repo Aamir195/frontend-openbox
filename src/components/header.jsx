@@ -48,10 +48,9 @@ function Navigationbar() {
                     <Link to='/order'>Order</Link>
                   </li>
 
-                  <li onClick={(e) => logout(e)}>
-                    Logout
+                  <li onClick={(e) => logout(e)} >
+                   <div className="logout">Logout</div>
                   </li>
-
                 </> :
                 <>
                   <li>

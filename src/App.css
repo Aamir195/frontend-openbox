@@ -103,6 +103,9 @@ li {
   background: #2C2C2E;
   color: #D6D6D6;
 }
+.logout{
+  padding-top: 14px;
+}
 
 .brand {
   position: absolute;
