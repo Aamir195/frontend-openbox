@@ -22,7 +22,7 @@ function Navigationbar() {
     <section className="navigation sticky-top">
       <div className="nav-container ">
         <div className="brand">
-          <a href="/home">
+          <a href="/">
             <img src={Images.nameIcon2} alt=""
               height={40} />
           </a>
