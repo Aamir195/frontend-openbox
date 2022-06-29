@@ -932,7 +932,7 @@ img {
   gap: 15px;
 }
 
-.cellAction viewButton {
+.cellAction .viewButton {
   padding: 2px 5px;
   border-radius: 5px;
   color: darkblue;
