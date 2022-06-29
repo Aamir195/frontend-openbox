@@ -14,7 +14,7 @@ function Navigationbar() {
 
   const logout = (e) => {
     localStorage.removeItem("user-info");
-    navigate("/")
+    navigate("/login")
   }
 
   return (
