@@ -10,7 +10,7 @@ import BankDetail from '../src/pages/BankDetails'
 import BussinessAddressDetails from './pages/BussinessAddressDetails';
 import BussinessDetail from './pages/BussinessDetails';
 import PickupAddress from './pages/PickupAddress';
-import Navbar from './components/header';
+import Navigationbar from './components/header';
 import Order from './pages/Order'
 import Orderdetails from './pages/orderDetails'
 import Home from './pages/Home';
@@ -28,7 +28,7 @@ function App() {
 
 
       <BrowserRouter>
-        <Navbar />
+        <Navigationbar />
 
         <Routes>
           <Route exect path='/' element = {<Home/>} />

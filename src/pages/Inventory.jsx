@@ -9,8 +9,6 @@ import { Box } from '@mui/material';
 import EditProduct from './EditProduct';
 // import "./inventory.css"
 import Switch from "@mui/material/Switch";
-
-
 import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 // import { useNavigate, Link } from "react-router-dom";
@@ -42,7 +40,7 @@ function Inventory() {
       "http://localhost:9000/api/list/editStatus",
       {
         id,
-        vendorId: 1
+        vendorId: vendor_id
       }
     );
   };
@@ -57,7 +55,7 @@ function Inventory() {
 
   const fetchProduct = async (vendor_id) => {
     var result = await axios.post(url, {
-      id:1
+      id:vendor_id
     })
     var temp = await result.data
     console.log(temp);
@@ -82,7 +80,7 @@ function Inventory() {
         "http://localhost:9000/api/list/deleteListById",
         {
           id,
-          vendorId: 1
+          vendorId: vendor_id
         }
       );
 

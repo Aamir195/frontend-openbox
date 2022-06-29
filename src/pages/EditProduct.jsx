@@ -27,7 +27,7 @@ const EditProduct = () => {
     var result = await axios.post('http://localhost:9000/api/list/getProductDetailsById',
       {
         productId: product_id,
-        vendorId: 1
+        vendorId: vendor_id
       })
     var result = await result.data
 
@@ -57,7 +57,7 @@ const EditProduct = () => {
 
     axios.post("http://localhost:9000/api/list/addQuantityofProduct", {
       productId: params.id,
-      vendorId: 1,
+      vendorId: vendor_id,
       addQuantity: parseInt(quantity),
       price: parseInt(price),
     })

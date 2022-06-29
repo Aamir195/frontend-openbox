@@ -3,16 +3,16 @@ import { Link, useNavigate } from 'react-router-dom'
 // import { faBars } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Images from '../images/index'
+// import { Nav, Navbar } from 'react-bootstrap'
 
 
-
-function Navbar() {
+function Navigationbar() {
 
   let user = localStorage.getItem("user-info")
   console.log(user);
   let navigate = useNavigate();
-  
-  const logout = (e) =>{
+
+  const logout = (e) => {
     localStorage.removeItem("user-info");
     navigate("/")
   }
@@ -47,9 +47,11 @@ function Navbar() {
                   <li>
                     <Link to='/order'>Order</Link>
                   </li>
+
                   <li onClick={(e) => logout(e)}>
-                     Logout
+                    Logout
                   </li>
+
                 </> :
                 <>
                   <li>
@@ -73,4 +75,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default Navigationbar
