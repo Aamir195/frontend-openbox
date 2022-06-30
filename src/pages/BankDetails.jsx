@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 // import axios from "axios";
 // import { Navigate } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -6,42 +6,39 @@ import { useNavigate } from "react-router-dom";
 const URL = "http://localhost:9000/api/bank/addBankDetail";
 
 function BankDetails() {
-
   const navigate = useNavigate();
   const [accountHolderName, setAccount] = useState("");
+  const [accountNumber, setAccountnumber] = useState(""); //Deepak
   const [ifscCode, setIfsccode] = useState("");
   const [bankName, setBank] = useState("");
   const [accountType, setAccounttype] = useState("");
   const [file, setFile] = useState("");
 
-
   async function onSubmit() {
     // console.log("Aamir")
     console.warn(accountHolderName, ifscCode, bankName, accountType, file);
     const formData = new FormData();
-    formData.append('accountHolderName', accountHolderName);
-    formData.append('ifscCode', ifscCode);
-    formData.append('bankName', bankName);
-    formData.append('accountType', accountType);
-    formData.append('chequeImage', file);
+    formData.append("accountHolderName", accountHolderName);
+    formData.append("accountNumber", accountNumber);
+    formData.append("ifscCode", ifscCode);
+    formData.append("bankName", bankName);
+    formData.append("accountType", accountType);
+    formData.append("chequeImage", file);
 
     try {
       let resp = fetch(URL, {
-        method: 'POST',
-        body: formData
+        method: "POST",
+        body: formData,
       });
-      console.log(resp.data)
+      console.log(resp.data);
       if (resp.status === 200) {
         alert("Your Data Has been saved.");
       }
       // alert("Your Data HAs been saved.")
-      navigate('/dashboard', {replace : true});
-
-    }
-    catch {
+      navigate("/dashboard", { replace: true });
+    } catch {
       alert("Something wrong is happend");
     }
-
   }
   return (
     <div className="container">
@@ -52,7 +49,6 @@ function BankDetails() {
       </div> */}
 
       <div className="row">
-
         {/* form start here  */}
         <div className="parent">
           <div className="column1">
@@ -72,6 +68,20 @@ function BankDetails() {
                       onChange={(e) => setAccount(e.target.value)}
                       required
                     />
+                  </div>
+                  {/* Deepak */}
+                  <div className="form_wrap">
+                    <div className="form_item">
+                      <input
+                        type="number"
+                        name="accountNumber"
+                        placeholder="Account Number"
+                        value={accountNumber}
+                        // value={lane}
+                        onChange={(e) => setAccountnumber(e.target.value)}
+                        required
+                      />
+                    </div>
                   </div>
                   <div className="form_wrap">
                     <div className="form_item">
@@ -98,14 +108,20 @@ function BankDetails() {
                         onChange={(e) => setBank(e.target.value)}
                         required
                       />
-
                     </div>
                   </div>
                   <div className="form_wrap">
                     <div className="form_item">
-
-                      <select className="form-control" name="accountType" value={accountType} onChange={(e) => setAccounttype(e.target.value)} required>
-                        <option disabled value="">Select Account Type</option>
+                      <select
+                        className="form-control"
+                        name="accountType"
+                        value={accountType}
+                        onChange={(e) => setAccounttype(e.target.value)}
+                        required
+                      >
+                        <option disabled value="">
+                          Select Account Type
+                        </option>
                         <option>Saving</option>
                         <option>Current</option>
                       </select>
@@ -117,11 +133,23 @@ function BankDetails() {
                         Upload cancled cheque :
                       </div>
                       <label htmlFor="myfile">Select files:</label>
-                      <input type="file" name="file" id='file' onChange={(e) => setFile(e.target.files[0])} /><br></br>
+                      <input
+                        type="file"
+                        name="file"
+                        id="file"
+                        onChange={(e) => setFile(e.target.files[0])}
+                      />
+                      <br></br>
                     </div>
                   </div>
                   <div className="btn">
-                    <button type="button" onClick={onSubmit} className="btn btn-primary">Submit</button>
+                    <button
+                      type="button"
+                      onClick={onSubmit}
+                      className="btn btn-primary"
+                    >
+                      Submit
+                    </button>
                   </div>
                 </form>
               </div>
@@ -133,14 +161,11 @@ function BankDetails() {
             <h2 className="forh2">
               Get a share of thousands of crores of rupees paid out every week!
             </h2>
-
           </div>
         </div>
-
       </div>
     </div>
-
-  )
+  );
 }
 
-export default BankDetails
+export default BankDetails;

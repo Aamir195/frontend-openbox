@@ -45,7 +45,7 @@ function Order() {
   const getAllOrder = async (id) => {
     var result = await axios.post('http://localhost:9000/api/order/showAllOrders',
       {
-        vendorId: vendor_id
+        vendorId: 1
       })
     var ans = await result.data
     console.log(ans)
