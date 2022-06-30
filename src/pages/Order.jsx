@@ -33,7 +33,7 @@ function Order() {
   }
 
   //search for no status selected 
-  const submit = e =>{
+  const onSubmit = e =>{
     getAllOrdersNoStatus()
   }
 
@@ -122,8 +122,8 @@ function Order() {
   return (
     <div className='container mt-3' >
       <div className="row">
-        <nav aria-label="breadcrumb pname">
-          <ol className="breadcrumb">
+        <nav aria-label="breadcrumb" className='bg-light rounded-3 p-3 mb-4'>
+          <ol className="breadcrumb mb-0">
             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
             <li className="breadcrumb-item active" aria-current="page">Order</li>
           </ol>
@@ -158,7 +158,7 @@ function Order() {
               </select>
             </div>
           </div>
-          <button type="submit" className="btn btn-primary mb-3 search-button" onClick={(e) =>getAllOrdersNoStatus(e)} >Search</button>
+          <button type="submit" className="btn btn-primary mb-3 search-button" onClick={(e) =>onSubmit(e)} >Search</button>
           {/* <div className="">
            
           </div> */}

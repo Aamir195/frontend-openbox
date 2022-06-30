@@ -80,8 +80,8 @@ const userColumns = [
   return (
     <div className="container mt-3">
       <div className="row">
-        <nav aria-label="breadcrumb pname">
-          <ol className="breadcrumb">
+        <nav aria-label="breadcrumb" className='bg-light rounded-3 p-3 mb-4' >
+          <ol className="breadcrumb mb-0">
             <li className="breadcrumb-item"><Link to='/dashboard'>Dashboard</Link></li>
             <li className="breadcrumb-item"><Link to='/order'>Order</Link></li>
             <li className="breadcrumb-item active" aria-current="page">Order Detail</li>

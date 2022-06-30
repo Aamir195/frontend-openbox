@@ -1221,3 +1221,12 @@ hr.style13 {
 .regularShadow {
   box-shadow: 5px 7px 9px #D6D6D6;
 }
+
+
+/* Profile Page start */
+
+nav.bg-light.rounded-3.p-3.mb-4 {
+  float: left;
+  width: 100%;
+}
+/* profile page ends  */

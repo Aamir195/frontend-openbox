@@ -18,6 +18,7 @@ import NewProduct from './pages/NewProduct';
 import Inventory from './pages/Inventory';
 import ListProduct from './pages/ListProduct';
 import EditProduct from './pages/EditProduct';
+import Profile from './pages/Profile';
 
 
 
@@ -33,7 +34,7 @@ function App() {
         <Routes>
           <Route exect path='/' element = {<Home/>} />
           <Route path='/dashboard' element={<Dashboard />} />
-          
+          <Route path='/profile' element = {<Profile/>} />
           <Route path='/order' element={<Order />} />
           <Route path='/order-details/:id' element={<Orderdetails />} />
           <Route path="/list-product" element={<ListProduct />} />

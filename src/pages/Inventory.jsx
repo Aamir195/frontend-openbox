@@ -12,11 +12,13 @@ import Switch from "@mui/material/Switch";
 import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 // import { useNavigate, Link } from "react-router-dom";
-
+import { TabTitle } from '../components/Tabtitle'
 
 const url = 'http://localhost:9000/api/list/getAllProduct'
 
 function Inventory() {
+  TabTitle('Inventory - OpenBox.IN')
+
   const RedSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
       color: red[900],
@@ -55,7 +57,7 @@ function Inventory() {
 
   const fetchProduct = async (vendor_id) => {
     var result = await axios.post(url, {
-      id:vendor_id
+      id: vendor_id
     })
     var temp = await result.data
     console.log(temp);
@@ -146,7 +148,17 @@ function Inventory() {
 
   return (
     <>
-      <div className="main mt-3">
+      <div className="container mt-3">
+        <div className="row">
+          <div className="col">
+            <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4 ">
+              <ol className="breadcrumb mb-0">
+                <li className="breadcrumb-item"><Link to="/dashboard">Dashboard</Link></li>
+                <li className="breadcrumb-item active" aria-current="page">Inventory</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
         <div className="container">
           <div className="row mb-2">
             <h3>

@@ -35,6 +35,7 @@ export default function Register() {
             localStorage.setItem("user-info", result);
             localStorage.setItem("id", (result.id));
             // console.log(result.id)
+            
             navigate('/pickup-address', { replace: true })
 
     }

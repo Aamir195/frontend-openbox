@@ -13,10 +13,13 @@ import axios from "axios";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import NewProduct from "./NewProduct";
+import { TabTitle } from "../components/Tabtitle";
 // import "./listproductt.css";
 
 var deep = 0;
 const Listproduct = () => {
+
+    TabTitle('List Product - OpenBox.IN')
 
     const [subitem, setsubItem] = useState([]);
     const [item, setItem] = useState([]);
@@ -125,6 +128,16 @@ const Listproduct = () => {
 
     return (
         <div className="container mt-3">
+            <div className="row">
+                <div className="col">
+                    <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4 ">
+                        <ol className="breadcrumb mb-0">
+                            <li className="breadcrumb-item"><Link to="/dashboard">Dashboard</Link></li>
+                            <li className="breadcrumb-item active" aria-current="page">List Product</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
             <div className="row">
                 <div className="datasub">
                     <div className="datasubTitle">
