@@ -13,11 +13,12 @@ function BankDetails() {
   const [bankName, setBank] = useState("");
   const [accountType, setAccounttype] = useState("");
   const [file, setFile] = useState("");
-
+  let vendor_id = localStorage.getItem('id')
   async function onSubmit() {
     // console.log("Aamir")
     console.warn(accountHolderName, ifscCode, bankName, accountType, file);
     const formData = new FormData();
+    formData.append("vendorId", vendor_id);
     formData.append("accountHolderName", accountHolderName);
     formData.append("accountNumber", accountNumber);
     formData.append("ifscCode", ifscCode);
@@ -26,7 +27,7 @@ function BankDetails() {
     formData.append("chequeImage", file);
 
     try {
-      let resp = fetch(URL, {
+      let resp = await fetch(URL, {
         method: "POST",
         body: formData,
       });

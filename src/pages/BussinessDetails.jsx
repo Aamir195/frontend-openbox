@@ -15,7 +15,7 @@ function BussinessDetails() {
     const [businessName, setBusinessName] = useState("");
     const [panNumber, setPanNumber] = useState("");
     const [files, setFiles] = useState("");
-
+    let vendor_id = localStorage.getItem('id')
 
     const onhandleChange = async (e) => {
         e.preventDefault();
@@ -25,6 +25,7 @@ function BussinessDetails() {
 
         console.log(addressId, gstNumber, businessName, panNumber, files)
         const formData = new FormData();
+        formData.append("vendorId", vendor_id);
         formData.append('addressId', addressId)
         formData.append('gstNumber', gstNumber);
         formData.append('businessName', businessName);

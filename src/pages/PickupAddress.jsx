@@ -12,12 +12,12 @@ function PickupAddress() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-
+  let vendor_id = localStorage.getItem('id')
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.log(name, email, phone, password);
+    console.log(lane, pincode, city, state,country);
     try {
-      const resp = axios.post(URL, {
+      const resp = await axios.post(URL, {
         lane: lane,
         pincode: pincode,
         city: city,
@@ -25,11 +25,28 @@ function PickupAddress() {
         country: country,
       });
       console.log(resp.data);
-      navigate("/bussiness-address");
+      var result = await resp.data
+      //let address_id=result.id
+      //fuction call add address id to vendor id
+      addAddressId(result.id)
+     
     } catch (error) {
       console.log(error.response);
     }
   };
+
+  const addAddressId = async (addressId) => {
+    try {
+      const resp = await axios.post('http://localhost:9000/api/address/updateAddres', {
+        vendorId:vendor_id,
+        addressId:addressId
+      });
+      console.log(resp.data);
+      navigate("/bussiness-address");
+  } catch (error) {
+    console.log(error.response);
+  }
+  }
 
   return (
     <div className="row">
@@ -125,4 +142,4 @@ function PickupAddress() {
   );
 }
 
-export default PickupAddress;
+export default PickupAddress
