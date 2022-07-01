@@ -71,6 +71,20 @@ const EditProduct = () => {
     window.location.reload()
 
   };
+  //for preventing the negative number in input field 
+  const preventMinus = (e) => {
+    if (e.code === 'Minus') {
+      e.preventDefault();
+    }
+  };
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData('text'));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
 
 
   return (
@@ -97,6 +111,7 @@ const EditProduct = () => {
                 <img className='img-thumbnail' src={Images.logo} alt="" width={300} height={300} />
               </div>
               <div className="col-8 border rounded-2 p-3 ">
+                <h4>Product Name</h4>
                 <h5> {productName} </h5><br />
                 <div className="row">
                   <div className="col">
@@ -119,7 +134,7 @@ const EditProduct = () => {
                   <div className="form-group">
                     <div class="form-outline">
                       <label class="form-label" for="typeNumber">Add number of quantity</label>
-                      <input type="number" value={quantity} onChange={(e) => { setQuantity(e.target.value) }} id="typeNumber" class="form-control" />
+                      <input type="number" min={0} onPaste={preventPasteNegative} onKeyPress={preventMinus} value={quantity} onChange={(e) => { setQuantity(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
                 </div>
@@ -127,15 +142,15 @@ const EditProduct = () => {
                   <div className="form-group">
                     <div class="form-outline">
                       <label class="form-label" for="typeNumber">Price</label>
-                      <input type="number" value={price} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
+                      <input type="number" min={0.001} onPaste={preventPasteNegative} onKeyPress={preventMinus} value={price} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-2">
                   <div className="form-group">
                     <div class="form-outline">
-                      <label class="form-label" for="typeNumber">Discount</label>
-                      <input type="number" value={discount} onChange={(e) => { setDiscount(e.target.value) }} id="typeNumber" class="form-control" />
+                      <label class="form-label" for="typeNumber">Discount <span> (In %)</span></label>
+                      <input type="number" min={0.01} max={100} onPaste={preventPasteNegative} onKeyPress={preventMinus} value={discount} onChange={(e) => { setDiscount(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
                 </div>

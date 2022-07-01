@@ -37,22 +37,35 @@ function Order() {
     getAllOrdersNoStatus()
   }
 
-
+// all pending order details from '2022-02-1' to current date
   useEffect(() => {
-    getAllOrder(vendor_id);
+    getAllOrder()
   }, [])
 
-  const getAllOrder = async (id) => {
-    var result = await axios.post('http://localhost:9000/api/order/showAllOrders',
-      {
-        vendorId: 1
-      })
-    var ans = await result.data
-    console.log(ans)
-    setSearch(ans)
+  // const getAllOrder = async (id) => {
+  //   var result = await axios.post('http://localhost:9000/api/order/showAllOrders',
+  //     {
+  //       vendorId: 1
+  //     })
+  //   var ans = await result.data
+  //   console.log(ans)
+  //   setSearch(ans)
+  // }
+
+  // getting order for all pending order till todays date 
+  var current = new Date();
+  var date = `${current.getFullYear()}/${current.getMonth()+1}/${current.getDate()}`
+  const getAllOrder = async () => {
+    var result = await axios.post('http://localhost:9000/api/order/getAllOrders',
+
+   {
+    startdate : '2022-02-1',
+    enddate : date,
+    status : 'Pending',
+    vendorId : vendor_id
+   }
+    )
   }
-
-
 
   const actionColumn = [
     {

@@ -60,6 +60,21 @@ const NewProduct = () => {
 
   };
 
+  //for preventing the negative number in input field 
+ const preventMinus = (e) => {
+    if (e.code === 'Minus') {
+      e.preventDefault();
+    }
+  };
+  const preventPasteNegative = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedData = parseFloat(clipboardData.getData('text'));
+
+    if (pastedData < 0) {
+      e.preventDefault();
+    }
+  };
+
 
   return (
     <div className="container mt-3">
@@ -94,7 +109,8 @@ const NewProduct = () => {
                   <div className="form-group">
                     <div class="form-outline">
                       <label class="form-label" for="typeNumber">Add number of quantity</label>
-                      <input type="number" value={quantity} onChange={(e) => { setQuantity(e.target.value) }} id="typeNumber" class="form-control" />
+                      <input type="number"  min={0} onPaste={preventPasteNegative}
+                       onKeyPress={preventMinus} value={quantity} onChange={(e) => { setQuantity(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
                 </div>
@@ -102,7 +118,8 @@ const NewProduct = () => {
                   <div className="form-group">
                     <div class="form-outline">
                       <label class="form-label" for="typeNumber">Price</label>
-                      <input type="number" value={price} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
+                      <input type="number"  min={0.01} onPaste={preventPasteNegative}
+                        onKeyPress={preventMinus} value={price} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
                 </div>
