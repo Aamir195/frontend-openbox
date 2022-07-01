@@ -62,7 +62,7 @@ function Order() {
     startdate : '2022-02-1',
     enddate : date,
     status : 'Pending',
-    vendorId : vendor_id
+    vendorId : 1
    }
     )
   }
