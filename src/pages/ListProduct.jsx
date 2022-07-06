@@ -28,10 +28,17 @@ const Listproduct = () => {
     const [subcategoryId, setsubcategoryID] = useState();
     const [value, setValue] = useState("");
     const [subvalue, setsubValue] = useState("");
+    const [isverfied, setVerified] = useState("");
+    const [bankId, setBankId] = useState("");
+    const [addressId, setAddressId] = useState("");
+    const [businessId, setBussinessId] = useState("");
+
 
     useEffect(() => {
         fetchCategory();
     }, []);
+
+
 
     const handleChange = (e) => {
         setcategoryID(e.target.value);
@@ -49,6 +56,19 @@ const Listproduct = () => {
         console.log(deep)
         fetchProductByCatsubcatId(e.target.value, deep);
     };
+
+    //getting data from vendor table to see that vendor is verfied or not 
+    const getVendor = async () => {
+        var vendor = await axios.post('http://localhost:8000/api/vendor/getvendorById', {
+            id: 1
+        });
+        var result = await vendor.data;
+        var verify = vendor.isverfied;
+        setAddressId(vendor.addressId);
+        setBankId(vendor.bankId);
+        setBussinessId(vendor.businessId);
+        setVerified(verify); // contain the value of isVarified value from vendor table 
+    }
 
 
     const fetchCategory = async () => {
@@ -138,19 +158,24 @@ const Listproduct = () => {
                     </nav>
                 </div>
             </div>
-            <div className="row">
+            {/* if vendor is verfied show the form and table othervise some data on card  */}
+            {
+                isverfied === 1  ? 
+                <>
+                <div className="row">
                 <div className="datasub">
                     <div className="datasubTitle">
                         <h2> List your Product</h2>
                     </div>
-
                     <div className="bodycat ">
-
-
+                       
                         <Box className="datagrid-style">
+
                             {/* <label htmlFor="category" className="sr-only">
                             Select Category {categoryId}
                         </label> */}
+
+
 
                             <FormControl sx={{ m: 1, minWidth: 100 }}>
                                 <InputLabel id="demo-simple-select-autowidth-label" >
@@ -208,6 +233,33 @@ const Listproduct = () => {
                     </Box>
                 </div>
             </div>
+                </> :
+                <>
+                <div className="row">
+                    <div className="card">
+                        
+                        <div className="card-body">
+                        <div className="card-header1">
+                           Warning !
+                        </div>
+                        <hr />
+                         <div className="warning-card">
+                            <p className="warning-card"> You are not verified ! </p>
+                            {
+                                (addressId === null) || (bankId === null) || (businessId === null) ?
+                                <>
+                                <p>Please Complete your Profile</p>
+                                </>:
+                                <>
+                                <p>Wait For Some Time To verify Your Account </p>
+                                </>
+                            }
+                         </div>
+                        </div>
+                    </div>
+                </div>
+                </>
+            }
         </div>
 
     );

@@ -59,12 +59,16 @@ function Order() {
     var result = await axios.post('http://localhost:9000/api/order/getAllOrders',
 
    {
-    startdate : '2022-02-1',
-    enddate : date,
-    status : 'Pending',
+    startDate : '2022-02-1',
+    endDate : date,
+    Status : 'Pending',
     vendorId : 1
    }
     )
+    var ans = await result.data
+      console.log(ans)
+      setSearch(ans)
+
   }
 
   const actionColumn = [

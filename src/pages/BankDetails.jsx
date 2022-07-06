@@ -74,7 +74,7 @@ function BankDetails() {
                   <div className="form_wrap">
                     <div className="form_item">
                       <input
-                        type="number"
+                        type="text"
                         name="accountNumber"
                         placeholder="Account Number"
                         value={accountNumber}
