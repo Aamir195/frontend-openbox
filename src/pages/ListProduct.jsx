@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { TabTitle } from "../components/Tabtitle";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import List from "../components/list";
+import List from "../components/List";
+import Error from "./Error"
 // import "./listproductt.css";
 
 
@@ -15,9 +16,7 @@ const Listproduct = () => {
     var vendor_id = localStorage.getItem("id");
 
     const [isVerified, setVerified] = useState("");
-    const [bankId, setBankId] = useState("");
-    const [addressId, setAddressId] = useState("");
-    const [businessId, setBussinessId] = useState("");
+   
 
     useEffect(() => {
         getVendor(vendor_id)
@@ -25,15 +24,14 @@ const Listproduct = () => {
 
 
     //getting data from vendor table to see that vendor is verfied or not 
-    const getVendor = async () => {
+    const getVendor = async (vendor_id) => {
         var vendor = await axios.post('http://localhost:9000/api/vendor/getvendorById', {
-            id: 1
+            id: vendor_id
+
         });
         vendor = await vendor.data;
-        setAddressId(vendor.addressId);
-        setBankId(vendor.bankId);
-        setBussinessId(vendor.businessId);
-        setVerified(vendor.isVerified); // contain the value of isVarified value from vendor table 
+        setVerified(vendor.isVerified);
+        //alert(vendor.isVerified) // contain the value of isVarified value from vendor table 
 
     }
 
@@ -67,38 +65,21 @@ const Listproduct = () => {
                 </div>
             </div>
 
-            {/* if vendor is verfied show the form and table othervise some data on card  */}
-            {
-                isVerified === 1 ?
-                    <>
-<List/>
-                    </> :
-                    <>
-{/* show this when user is not verfied  */}
-<div className="row">
-                <div className="card">
-                    <div className="card-body">
-                        <div className="card-header1">
-                            Warning !
-                        </div>
-                        <hr />
-                        <div className="warning-card">
-                            <p className="warning-card"> You are not verified ! </p>
-                            {
-                                (addressId === null) || (bankId === null) || (businessId === null) ?
-                                    <>
-                                        <p>Please Complete your Profile</p>
-                                    </> :
-                                    <>
-                                        <p>Wait For Some Time To verify Your Account </p>
-                                    </>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-                    </>
-            }
+            
+                
+           
+            {(() => {
+        if (isVerified ==1) {
+          return (
+            <div><List /></div>
+          )
+        } else {
+          return (
+            <div> <Error /></div>
+          )
+        }
+      })()}
+
         </div>
 
     );

@@ -42,8 +42,8 @@ const List = () => {
         setsubcategoryID(e.target.value);
         console.log(e.target);
         setsubValue(e.target.value);
-        console.log(deep)
-        fetchProductByCatsubcatId(e.target.value, deep);
+        console.log(deep+value)
+        fetchProductByCatsubcatId(e.target.value, value);
     };
 
     const fetchCategory = async () => {
@@ -79,7 +79,7 @@ const List = () => {
 
     const fetchProductByCatsubcatId = async (id, temp) => {
         var result = await axios.post(
-            "http://localhost:9000/api/list/getAllProductList",   // changed the api 
+            "http://localhost:8000/api/product/getProductbyCategoryIdsubCategoryId",   // changed the api 
             { categoryId: temp, subCategoryId: id }
         );
         var ans = await result.data;

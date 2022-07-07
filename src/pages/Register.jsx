@@ -112,7 +112,7 @@ export default function Register() {
                                             </div>
                                         </div>
                                         <div className="btn">
-                                            <input type="submit" value="Sign Up" />
+                                            <input type="submit" value="Sign Up"  />
                                         </div>
 
                                         <div>
