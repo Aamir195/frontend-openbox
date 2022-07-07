@@ -1233,4 +1233,36 @@ nav.bg-light.rounded-3.p-3.mb-4 {
   float: left;
   width: 100%;
 }
+
+.de{
+  border: 0.5px solid red;
+}
+.docsImage{
+  display: block;
+  max-width:600px;
+  max-height:600px;
+  width: auto;
+  height: auto;
+}
+.modal-body {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+
+  
+}
+.modal-dialog{
+  display: flex;
+  justify-content: center;
+  max-width:700px;
+  max-height:700px;
+  width: auto;
+  height: auto;
+  /* border: 0.5px solid red; */
+}
+
+/* .vendor {
+  margin-left : 2%;
+  margin-right: 2%;
+} */
 /* profile page ends  */

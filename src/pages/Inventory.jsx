@@ -57,7 +57,7 @@ function Inventory() {
 
   const fetchProduct = async (vendor_id) => {
     var result = await axios.post(url, {
-      id: vendor_id
+      id: 1 /// changed it
     })
     var temp = await result.data
     console.log(temp);
