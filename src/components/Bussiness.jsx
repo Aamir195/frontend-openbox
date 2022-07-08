@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
+import Images from "../images/index"
 
 const Bussiness = () => {
 
@@ -77,7 +78,7 @@ const Bussiness = () => {
 
                                             {/* <!-- Modal body with image --> */}
                                             <div className="modal-body">
-                                                <img className='docsImage img-thumbnail' src="dummySignature.png" />
+                                                <img className='docsImage img-thumbnail' src={Images.dummySignature} />
                                             </div>
                                         </div>
                                     </div>
