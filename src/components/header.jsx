@@ -36,7 +36,7 @@ function Navigationbar() {
               localStorage.getItem("user-info") ?
                 <>
                   <li>
-                    <Link to="/dashboard">Dashboard</Link>
+                    <Link className={({ isActive }) => (isActive ? "link-active" : "link")} to="/dashboard">Dashboard</Link>
                   </li>
                   <li>
                     <Link to="/list-product">Product List</Link>

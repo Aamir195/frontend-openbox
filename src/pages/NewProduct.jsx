@@ -20,11 +20,13 @@ const NewProduct = () => {
   const [color, setColor] = useState([]);
   const [highlightFeature, setFeature] = useState("")
   const [subcategoryIcon, setImage] = useState("");
+  const [isadded, setIsadded] = useState("");
   let vendor_id = localStorage.getItem('id')
 
   useEffect(() => {
     //alert(params.id)
     getProductDetailstoadd(params.id);
+    addedStatus(params.id, vendor_id)
   }, [])
 
   const getProductDetailstoadd = async (id) => {
@@ -60,8 +62,21 @@ const NewProduct = () => {
 
   };
 
+  // for getting the added product status (true or false)
+  async function addedStatus(productId, vendor_id) {
+    var status = await axios.post("http://localhost:9000/api/list/getProductAddedStatus", {
+      productId: params.id,
+      vendorId: vendor_id
+    });
+    status = await status.data;
+    setIsadded(status.result);
+    console.log(isadded);
+    // alert(isadded);
+
+  }
+
   //for preventing the negative number in input field 
- const preventMinus = (e) => {
+  const preventMinus = (e) => {
     if (e.code === 'Minus') {
       e.preventDefault();
     }
@@ -89,11 +104,12 @@ const NewProduct = () => {
           </nav>
         </div>
       </div>
+
       <div className="edit-card">
         <div className="card">
 
           <div className="card-body">
-            <h5 class="card-title">New Product</h5>
+            <h5 className="card-title">New Product</h5>
             <div className="row">
               <div className="details">
                 <img src={Images.logo} alt="" height={100} />
@@ -103,32 +119,41 @@ const NewProduct = () => {
                 <p>{productDescription} </p>
               </div>
             </div>
-            <div className="row">
-              <form className="form-inline">
-                <div className="col-md-6 col-sm-12 mb-2">
-                  <div className="form-group">
-                    <div class="form-outline">
-                      <label class="form-label" for="typeNumber">Add number of quantity</label>
-                      <input type="number"  min={0} onPaste={preventPasteNegative}
-                       onKeyPress={preventMinus} value={quantity} onChange={(e) => { setQuantity(e.target.value) }} id="typeNumber" class="form-control" />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6 col-sm-12 mb-2">
-                  <div className="form-group">
-                    <div class="form-outline">
-                      <label class="form-label" for="typeNumber">Price</label>
-                      <input type="number"  min={0.01} onPaste={preventPasteNegative}
-                        onKeyPress={preventMinus} value={price} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
-                    </div>
-                  </div>
-                </div>
-                <div className="details">
-                  <button type="submit" className="btn btn-primary mb-3" onClick={(e) => editProductdetails()} > <Link to="/inventory" style={{ textDecoration: 'none', color: '#FFF' }}>Done</Link></button>
-                </div>
+            {
+              isadded == true ? <>
+                <p className='warning-text' >You have already added this product. Please check your <Link to='/inventory'>inventory</Link>.</p>
+              </>
+                :
+                <>
+                  <div className="row">
+                    <form className="form-inline">
+                      <div className="col-md-6 col-sm-12 mb-2">
+                        <div className="form-group">
+                          <div className="form-outline">
+                            <label className="form-label" htmlFor="typeNumber">Add number of quantity</label>
+                            <input type="number" min={0} onPaste={preventPasteNegative}
+                              onKeyPress={preventMinus} value={quantity} onChange={(e) => { setQuantity(e.target.value) }} id="typeNumber" className="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6 col-sm-12 mb-2">
+                        <div className="form-group">
+                          <div className="form-outline">
+                            <label className="form-label" htmlFor="typeNumber">Price</label>
+                            <input type="number" min={0.01} onPaste={preventPasteNegative}
+                              onKeyPress={preventMinus} value={price} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" className="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="details">
+                        <button type="submit" className="btn btn-primary mb-3" onClick={(e) => editProductdetails()} > <Link to="/inventory" style={{ textDecoration: 'none', color: '#FFF' }}>Done</Link></button>
+                      </div>
 
-              </form>
-            </div>
+                    </form>
+                  </div>
+                </>
+            }
+
           </div>
         </div>
 

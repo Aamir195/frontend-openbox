@@ -46,7 +46,7 @@ const getOrderDetails = async (id) => {
 const getOrderCustomerDetails = async (vendor_id,id) => {
 
   var result =await axios.post('http://localhost:9000/api/order/getCustomerDetails', 
-  { vendorId:vendor_id
+  { vendorId:1
     ,id})
   var result = await result.data
 
@@ -148,8 +148,8 @@ const userColumns = [
               <h4 class="card-title">Customer Details </h4>
               <hr />
               <div className="container">
-                <div class="row">
-                  <div class="col-md-6" >
+                <div className="row">
+                  <div className="col-md-6" >
                     <h5>
                       Customer Name :
                     </h5>
@@ -163,7 +163,7 @@ const userColumns = [
                     </h5>
                     <p>{email}</p>
                   </div>
-                  <div class="col-md-6" >
+                  <div className="col-md-6" >
                     <h5>
                       Address :
                     </h5>

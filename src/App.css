@@ -102,6 +102,13 @@ li {
 }
 .logout {
   padding-top: 14px;
+  cursor: pointer;
+  padding-left: 12px;
+}
+.logout:hover {
+  /* font-weight: 700; */
+  color: #fff;
+  /* background: #efa967; */
 }
 
 .brand {
@@ -156,12 +163,8 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a:visited:hover {
-  /* background: #2581DC; */
+  background: #efa967;
   color: #ffffff;
-}
-
-.navbar-dropdown li a {
-  background: #2581dc;
 }
 
 nav ul li a:not(:only-child):after,
@@ -228,6 +231,15 @@ nav ul li ul li a {
 
   .navbar-dropdown {
     position: static;
+  }
+  .link {
+    color: white;
+  }
+
+  /* Specific styles for active links */
+  .link-active {
+    color: black;
+    background: orange;
   }
 
   @media screen and (min-width: 800px) {
@@ -453,7 +465,7 @@ nav ul li ul li a {
     border: 1px solid #dadce0;
     border-radius: 3px;
   }
-  
+
   /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -924,18 +936,23 @@ form.form-inline button.btn.btn-primary.mb-2 {
   padding-bottom: 1%;
 }
 
-.card-header1{
+.card-header1 {
   background-color: none;
   color: #f00f0f;
   font-weight: 500;
   font-size: 20px;
   text-align: center;
-  
 }
-.warning-card{
+.warning-card {
   font-weight: 400;
   padding-top: 12px;
   text-align: center;
+}
+.warning-text {
+  font-size: 16px;
+  color: red;
+  text-align: center;
+  padding: inherit;
 }
 
 /* list Product ends here  */
@@ -1234,13 +1251,13 @@ nav.bg-light.rounded-3.p-3.mb-4 {
   width: 100%;
 }
 
-.de{
+.de {
   border: 0.5px solid red;
 }
-.docsImage{
+.docsImage {
   display: block;
-  max-width:600px;
-  max-height:600px;
+  max-width: 600px;
+  max-height: 600px;
   width: auto;
   height: auto;
 }
@@ -1248,14 +1265,12 @@ nav.bg-light.rounded-3.p-3.mb-4 {
   display: flex;
   justify-content: center;
   /* align-items: center; */
-
-  
 }
-.modal-dialog{
+.modal-dialog {
   display: flex;
   justify-content: center;
-  max-width:700px;
-  max-height:700px;
+  max-width: 700px;
+  max-height: 700px;
   width: auto;
   height: auto;
   /* border: 0.5px solid red; */

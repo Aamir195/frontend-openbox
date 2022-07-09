@@ -33,7 +33,7 @@ function Order() {
   }
 
   //search for no status selected 
-  const onSubmit = e =>{
+  const onSubmit = () =>{
     getAllOrdersNoStatus()
   }
 
@@ -95,14 +95,14 @@ function Order() {
 
 
   const [search, setSearch] = useState([]);
-
+// serach order with status 
   const searchOrder = async (xyz) => {
     var result = await axios.post('http://localhost:9000/api/order/getAllOrders',
       {
         startDate: startdate,
         endDate: enddate,
         Status: xyz,
-        vendorId: vendor_id
+        vendorId: 1
 
       })
     var ans = await result.data
@@ -112,12 +112,13 @@ function Order() {
 
 
   const getAllOrdersNoStatus = async (e) => {
+    e.preventDefault();
     var result = await axios.post('http://localhost:9000/api/order/getAllOrdersNoStatus',
       {
         startDate: startdate,
         endDate: enddate,
         // Status:xyz,
-        vendorId: vendor_id
+        vendorId: 1
 
       })
     var ans = await result.data
@@ -175,7 +176,7 @@ function Order() {
               </select>
             </div>
           </div>
-          <button type="submit" className="btn btn-primary mb-3 search-button" onClick={(e) =>onSubmit(e)} >Search</button>
+          <button type="submit" className="btn btn-primary mb-3 search-button" onClick={(e) => getAllOrdersNoStatus(e)} >Search</button>
           {/* <div className="">
            
           </div> */}

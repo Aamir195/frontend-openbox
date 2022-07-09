@@ -104,7 +104,7 @@ const EditProduct = () => {
         <div className="card">
 
           <div className="card-body ">
-            <h5 class="card-title">Edit Product</h5>
+            <h5 className="card-title">Edit Product</h5>
 
             <div className="row p-2">
               <div className="col-4 d-flex flex-row-reverse align-items-center ">
@@ -132,16 +132,16 @@ const EditProduct = () => {
               <form className="form-inline">
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-2">
                   <div className="form-group">
-                    <div class="form-outline">
-                      <label class="form-label" for="typeNumber">Add number of quantity</label>
+                    <div className="form-outline">
+                      <label className="form-label" htmlFor="typeNumber">Add number of quantity</label>
                       <input type="number" min={0} onPaste={preventPasteNegative} onKeyPress={preventMinus} value={quantity} onChange={(e) => { setQuantity(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-2">
                   <div className="form-group">
-                    <div class="form-outline">
-                      <label class="form-label" for="typeNumber">Price</label>
+                    <div className="form-outline">
+                      <label className="form-label" htmlFor="typeNumber">Price</label>
                       <input type="number" min={0.001} onPaste={preventPasteNegative} onKeyPress={preventMinus} value={price} onChange={(e) => { setPrice(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>
@@ -149,7 +149,7 @@ const EditProduct = () => {
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-2">
                   <div className="form-group">
                     <div class="form-outline">
-                      <label class="form-label" for="typeNumber">Discount <span> (In %)</span></label>
+                      <label className="form-label" htmlFor="typeNumber">Discount <span> (In %)</span></label>
                       <input type="number" min={0.01} max={100} onPaste={preventPasteNegative} onKeyPress={preventMinus} value={discount} onChange={(e) => { setDiscount(e.target.value) }} id="typeNumber" class="form-control" />
                     </div>
                   </div>

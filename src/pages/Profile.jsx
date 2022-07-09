@@ -8,6 +8,7 @@ import Bussiness from '../components/Bussiness';
 import Bank from '../components/bank';
 import Vendor from '../components/Vendor';
 
+
 const Profile = () => {
     TabTitle('Profile - OpenBox.IN')
 
