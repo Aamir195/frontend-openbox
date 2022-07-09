@@ -1,11 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-<<<<<<< HEAD
 import Images from '../images';
-=======
-import Images from "../images/index"
->>>>>>> a3ab9079c7895dee589c9cdd3f9613fdbd4a9d37
+
+
 
 const Bussiness = () => {
 

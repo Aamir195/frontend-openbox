@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { TabTitle } from "../components/Tabtitle";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import List from "../components/List";
+import List from "../components/Liist";
 import Error from "./Error"
 // import "./listproductt.css";
 
