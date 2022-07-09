@@ -13,6 +13,7 @@ function Navigationbar() {
   let navigate = useNavigate();
 
   const logout = (e) => {
+    localStorage.removeItem("id")
     localStorage.removeItem("user-info");
     navigate("/login")
   }
@@ -51,7 +52,7 @@ function Navigationbar() {
                     <Link to='/profile'>Profile</Link>
                   </li>
                   <li onClick={(e) => logout(e)} >
-                    <div>Logout</div>
+                    <div className='logout'>Logout</div>
                   </li>
                 </> :
                 <>

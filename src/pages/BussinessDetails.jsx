@@ -100,7 +100,7 @@ function BussinessDetails() {
                                         </table>
 
                                     </div>
-                                    <div className="btn1">
+                                    <div className="btn1" style={{padding:10}}>
                                         <input type="submit" onClick={(e) => onhandleChange(e)} value="Continue" />
                                     </div>
                                 </div>

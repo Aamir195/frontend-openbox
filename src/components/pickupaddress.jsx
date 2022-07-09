@@ -26,7 +26,7 @@ const Pickupadd = () => {
 
     const fetchadd = async(vendor_id) =>{
         var result = await axios.post("http://localhost:9000/api/address/getAddress", {
-            id : 1
+            id : vendor_id
         });
         result = await result.data
         setLane(result.lane);

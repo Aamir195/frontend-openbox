@@ -28,7 +28,7 @@ const Bussiness = () => {
 
     const fetchBuss = async (vendor_id) => {
         var result = await axios.post("http://localhost:9000/api/businessDetail/getBusinessDetail", {
-            id : 1
+            id : vendor_id
         });
         result = await result.data;
         setBusinessName(result.businessName);
@@ -80,7 +80,7 @@ const Bussiness = () => {
 
                                             {/* <!-- Modal body with image --> */}
                                             <div className="modal-body">
-                                                <img className='docsImage img-thumbnail' src={Images.signature} />
+                                                {/* <img className='docsImage img-thumbnail' src={Images.signature} /> */}
                                                 <img className='docsImage img-thumbnail' src={Images.dummySignature} />
                                             </div>
                                         </div>
