@@ -51,7 +51,9 @@ function Navigationbar() {
                     <Link to='/profile'>Profile</Link>
                   </li>
                   <li onClick={(e) => logout(e)} >
-                   <div className="logout">Logout</div>
+                    <Link to="/">
+                   Logout
+                    </Link>
                   </li>
                 </> :
                 <>
