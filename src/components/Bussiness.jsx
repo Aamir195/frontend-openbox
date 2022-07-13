@@ -28,7 +28,7 @@ const Bussiness = () => {
 
     const fetchBuss = async (vendor_id) => {
         var result = await axios.post("http://localhost:9000/api/businessDetail/getBusinessDetail", {
-            id : vendor_id
+            id : 1
         });
         result = await result.data;
         setBusinessName(result.businessName);
@@ -39,8 +39,8 @@ const Bussiness = () => {
 
     return (
         <>
-            <div className="col-6 ">
-                <div className="card p-3 " style={{ height: 329 }}>
+            <div className="col-6 busniness">
+                <div className="card p-3 " >
                     <h5 className="my-3">Business Details
                     </h5>
                     <div className="card-body">
@@ -88,9 +88,9 @@ const Bussiness = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex flex-row-reverse mb-2">
+                        {/* <div className="d-flex flex-row-reverse mb-2">
                             <button type="button" className="btn btn-primary">Update</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

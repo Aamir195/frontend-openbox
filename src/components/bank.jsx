@@ -29,7 +29,7 @@ const Bank = () => {
 
     const fetchbank = async(vendor_id) =>{
         var result = await axios.post("http://localhost:9000/api/bank/getBankDetail", {
-            id : vendor_id // changed it
+            id : 1 // changed it
         });
         result = await result.data
         setName(result.accountHolderName);
@@ -101,9 +101,9 @@ const Bank = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex flex-row-reverse mb-2">
+                        {/* <div className="d-flex flex-row-reverse mb-2">
                             <button type="button" className="btn btn-primary">Update</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

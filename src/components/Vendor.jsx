@@ -48,7 +48,7 @@ const fetchvendor =  async(vendor_id) => {
                         <div className="row">
                             <div className="col-6"> <span><strong>Name:</strong></span> </div>
                             <div className="col-6"><span>{name}</span>
-                            {isVerified === 1 ? <>✅</> : <>❌</> }
+                            {isVerified === 1 ? <>✅</> : <></> }
                             </div>
                         </div>
                         <div className="row">
@@ -60,9 +60,9 @@ const fetchvendor =  async(vendor_id) => {
                             <div className="col-6"><span>{phone}</span></div>
                         </div>
 
-                        <div className="d-flex flex-row-reverse mb-2">
+                        {/* <div className="d-flex flex-row-reverse mb-2">
                             <button type="button" className="btn btn-primary">Update</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

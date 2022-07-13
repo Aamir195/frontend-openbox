@@ -60,9 +60,9 @@ const Pickupadd = () => {
                             <div className="col-6"> <span><strong>Country:</strong></span> </div>
                             <div className="col-6"><span>{country}</span></div>
                         </div>
-                        <div className="d-flex flex-row-reverse mb-2">
+                        {/* <div className="d-flex flex-row-reverse mb-2">
                             <button type="button" className="btn btn-primary">Update</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

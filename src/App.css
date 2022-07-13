@@ -100,6 +100,9 @@ li {
   background: #2c2c2e;
   color: #d6d6d6;
 }
+.busniness{
+  max-height: 100%;
+}
 .logout {
   padding-top: 14px;
   cursor: pointer;
