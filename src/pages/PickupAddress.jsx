@@ -36,6 +36,7 @@ function PickupAddress() {
   };
 
   const addAddressId = async (addressId) => {
+    console.log(addressId,vendor_id);
     try {
       const resp = await axios.post('http://localhost:9000/api/address/updateAddres', {
         vendorId:vendor_id,

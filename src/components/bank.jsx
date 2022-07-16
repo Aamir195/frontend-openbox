@@ -28,15 +28,15 @@ const Bank = () => {
     })
 
     const fetchbank = async(vendor_id) =>{
-        var result = await axios.post("http://localhost:9000/api/bank/getBankDetail", {
-            id : 1 // changed it
+        var result = await axios.post("http://localhost:8000/api/vendormanagement/getBankDetailsById", {
+            id : vendor_id // changed it
         });
         result = await result.data
-        setName(result.accountHolderName);
-        setAccountNumber(result.accountnumber);
-        setBank(result.bankName);
-        setIfsc(result.ifscCode);
-        setAccounttype(result.accountType)
+        setName(result[0].accountHolderName);
+        setAccountNumber(result[0].accountNumber);
+        setBank(result[0].bankName);
+        setIfsc(result[0].ifscCode);
+        setAccounttype(result[0].accountType)
 
     }
 

@@ -25,15 +25,16 @@ const Pickupadd = () => {
     })
 
     const fetchadd = async(vendor_id) =>{
-        var result = await axios.post("http://localhost:9000/api/address/getAddress", {
+        var result = await axios.post("http://localhost:8000/api/vendormanagement/getvendorDetailsbyId", {
             id : vendor_id
         });
         result = await result.data
-        setLane(result.lane);
-        setCity(result.city);
-        setState1(result.state);
-        setCountry(result.country);
-        setPincode(result.pincode);
+        
+        setLane(result[0].lane);
+        setCity(result[0].city);
+        setState1(result[0].state);
+        setCountry(result[0].country);
+        setPincode(result[0].pincode);
 
     }
 
