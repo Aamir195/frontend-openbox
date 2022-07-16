@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -14,7 +13,7 @@ function Login() {
         console.log(email, password)
         let item = { email, password }
 
-        var result = await axios.post("http://localhost:9000/api/vendor/verifyVendor", {
+        var result = await axios.post("http://localhost:8000/api/vendor/verifyVendor", {
            email, 
            password 
         });
@@ -22,10 +21,18 @@ function Login() {
         var result = await result.data;
         console.log(result)
 
-        // console.log(result[0].id)
+        var mssg=result.message
+      if( mssg=="Incorrect Email."){
+        alert("Incorrect email or password ");
+      
+      }else{
         localStorage.setItem("user-info", result)
         localStorage.setItem("id", (result.id));
         navigate('/dashboard', { replace: true });
+      }
+
+        // console.log(result[0].id)
+        
 
     }
 
@@ -51,11 +58,11 @@ function Login() {
                                 />
                             </div>
                         </div>
-                        <div className="forpass">
+                        {/* <div className="forpass">
                             <Link to="/">
                                 <p>Forgot Passwoord</p>
                             </Link>
-                        </div>
+                        </div> */}
                         <div className="form_wrap">
                             <div className="form_item">
                                 <input
