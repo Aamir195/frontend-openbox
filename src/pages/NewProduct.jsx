@@ -48,7 +48,7 @@ const NewProduct = () => {
 
   const editProductdetails = async () => {
 
-    axios.post("http://localhost:9000/api/list/listProduct", {
+    axios.post("http://localhost:8000/api/list/listProduct", {
       productId: params.id,
       vendorId: vendor_id,
       quantity: parseInt(quantity),
@@ -64,7 +64,7 @@ const NewProduct = () => {
 
   // for getting the added product status (true or false)
   async function addedStatus(productId, vendor_id) {
-    var status = await axios.post("http://localhost:9000/api/list/getProductAddedStatus", {
+    var status = await axios.post("http://localhost:8000/api/list/getProductAddedStatus", {
       productId: params.id,
       vendorId: vendor_id
     });

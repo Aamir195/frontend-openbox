@@ -27,7 +27,7 @@ const Bussiness = () => {
     })
 
     const fetchBuss = async (vendor_id) => {
-        var result = await axios.post("http://localhost:9000/api/businessDetail/getBusinessDetail", {
+        var result = await axios.post("http://localhost:8000/api/businessDetail/getBusinessDetail", {
             id : 1
         });
         result = await result.data;

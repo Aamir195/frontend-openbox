@@ -19,7 +19,7 @@ const Error = () => {
 
     //getting data from vendor table to see that vendor is verfied or not 
     const getVendor = async () => {
-        var vendor = await axios.post('http://localhost:9000/api/vendor/getvendorById', {
+        var vendor = await axios.post('http://localhost:8000/api/vendor/getvendorById', {
             id: 1
         });
         vendor = await vendor.data;

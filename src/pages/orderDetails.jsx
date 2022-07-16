@@ -36,7 +36,7 @@ const Orderdetails = () => {
 
 const getOrderDetails = async (id) => {
 
-  var result =await axios.post('http://localhost:9000/api/order/showOrdersProducts', 
+  var result =await axios.post('http://localhost:8000/api/order/showOrdersProducts', 
   {orderId:id})
   var ans = await result.data
   setSummary(ans)
@@ -45,7 +45,7 @@ const getOrderDetails = async (id) => {
 
 const getOrderCustomerDetails = async (vendor_id,id) => {
 
-  var result =await axios.post('http://localhost:9000/api/order/getCustomerDetails', 
+  var result =await axios.post('http://localhost:8000/api/order/getCustomerDetails', 
   { vendorId:1
     ,id})
   var result = await result.data

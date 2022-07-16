@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import { Navigate } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-const URL = "http://localhost:9000/api/bank/addBankDetail";
+const URL = "http://localhost:8000/api/bank/addBankDetail";
 
 function BankDetails() {
   const navigate = useNavigate();

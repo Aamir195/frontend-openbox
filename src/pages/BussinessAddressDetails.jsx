@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Add_URL = "http://localhost:9000/api/address/addAddress";
+const Add_URL = "http://localhost:8000/api/address/addAddress";
 // const BUS_URL = "http://localhost:8000/api/business/addBusinessDetail";
 function BussinessAddressDetails() {
 

@@ -43,7 +43,7 @@ function Order() {
   }, [])
 
   // const getAllOrder = async (id) => {
-  //   var result = await axios.post('http://localhost:9000/api/order/showAllOrders',
+  //   var result = await axios.post('http://localhost:8000/api/order/showAllOrders',
   //     {
   //       vendorId: 1
   //     })
@@ -56,7 +56,7 @@ function Order() {
   var current = new Date();
   var date = `${current.getFullYear()}/${current.getMonth()+1}/${current.getDate()}`
   const getAllOrder = async () => {
-    var result = await axios.post('http://localhost:9000/api/order/getAllOrders',
+    var result = await axios.post('http://localhost:8000/api/order/getAllOrders',
 
    {
     startDate : '2022-02-1',
@@ -97,7 +97,7 @@ function Order() {
   const [search, setSearch] = useState([]);
 // serach order with status 
   const searchOrder = async (xyz) => {
-    var result = await axios.post('http://localhost:9000/api/order/getAllOrders',
+    var result = await axios.post('http://localhost:8000/api/order/getAllOrders',
       {
         startDate: startdate,
         endDate: enddate,
@@ -113,7 +113,7 @@ function Order() {
 
   const getAllOrdersNoStatus = async (e) => {
     e.preventDefault();
-    var result = await axios.post('http://localhost:9000/api/order/getAllOrdersNoStatus',
+    var result = await axios.post('http://localhost:8000/api/order/getAllOrdersNoStatus',
       {
         startDate: startdate,
         endDate: enddate,

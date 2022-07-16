@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import authHeader from "../interceptors/auth-header";
 
-const URL = "http://localhost:9000/api/address/addAddress";
+const URL = "http://localhost:8000/api/address/addAddress";
 
 function PickupAddress() {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ function PickupAddress() {
   const addAddressId = async (addressId) => {
     console.log(addressId,vendor_id);
     try {
-      const resp = await axios.post('http://localhost:9000/api/address/updateAddres', {
+      const resp = await axios.post('http://localhost:8000/api/address/updateAddres', {
         vendorId:vendor_id,
         addressId:addressId
       });
