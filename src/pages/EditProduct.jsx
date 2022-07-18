@@ -55,6 +55,7 @@ const EditProduct = () => {
 
 
   }
+  // D:\Aamir\ecommerce\final\openbox\src\pages\EditProduct.jsx
 
   const editProductdetails = async () => {
 

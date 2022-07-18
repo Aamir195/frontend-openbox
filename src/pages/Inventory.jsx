@@ -4,14 +4,11 @@ import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import 'react-data-table-component-extensions/dist/index.css';
 import { Box } from '@mui/material';
 import EditProduct from './EditProduct';
-// import "./inventory.css"
 import Switch from "@mui/material/Switch";
 import { alpha, styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
-// import { useNavigate, Link } from "react-router-dom";
 import { TabTitle } from '../components/Tabtitle'
 
 const url = 'http://localhost:8000/api/list/getAllProduct'
